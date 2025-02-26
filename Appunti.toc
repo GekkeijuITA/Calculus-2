@@ -6,3 +6,5 @@
 \contentsline {subsubsection}{Esercizio 1}{2}{section*.2}%
 \contentsline {subsubsection}{Esercizio 2}{3}{section*.3}%
 \contentsline {section}{\numberline {1.2}Formula di Taylor con resto di Peano}{4}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Esercizi}{4}{subsection.1.2.1}%
+\contentsline {subsubsection}{Esercizio 1}{4}{section*.4}%
