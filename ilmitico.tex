@@ -1,0 +1,131 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\input{variables.tex}
+\preamble
+
+\begin{document}
+\section{Formula di Taylor}
+    \customfbox{$f^{(n)}$ indica l'ordine di derivazione $n$-esimo}
+    Data una funzione $f:I\rightarrow\mathbb{R}$ definita su un intervallo $I$ e derivabile infinite volte
+    \subsection{Polinomio di Taylor di $f$ centrato in $x_0$ di ordine $n$}
+        \begin{equation*}
+            \taylor{f}{x_0}{n}(x) = f(x_0)+f'(x_0)(x-x_0)+f''(x_0)\frac{(x-x_0)^2}{2!}+\ldots+f^{(n)}(x_0)\frac{(x-x_0)^n}{n!}
+        \end{equation*}
+        % Eventuale esercizio qui
+    \subsection{Formula di Taylor con resto di Lagrange}
+        \begin{equation*}
+            \begin{split}
+                &f(x) = \taylor{f}{x_0}{n}(x) + R_nf(x)\\
+                &R_nf(x) = \frac{f^{(n+1)}(c_n)(x-x_0)^{n+1}}{(n+1)!} \text{ con } c_n\in\{x_0,x\}
+            \end{split}
+        \end{equation*}
+        Se $x=b$ e $x_0$ è vicino a $b$, $\taylor{f}{x_0}{n}(b)$ approssima $f(b)$ e $\left|f(b)-\taylor{f}{x_0}{n}(b)\right| = \left|R_nf(b)\right|$
+        % Eventuale esercizio qui
+    \subsection{Formula di Taylor con resti di Peano}
+        \begin{equation*}
+                f(x)= \taylor{f}{x_0}{n}(x) + (x-x_0)^n + \varepsilon(x-x_0) \text{ con } \lim_{x\rightarrow x_0} \varepsilon(x-x_0) = 0
+        \end{equation*}
+        % Eventuale esercizio qui
+\section{Determinare se una serie converge/diverge o è indeterminata}
+    \subsection{Serie armonica}
+        \begin{equation*}
+            \sum_{n=1}^{\infty}\frac{1}{n^\alpha} = \begin{cases}
+                \text{converge} & \text{se }\alpha > 1\\
+                +\infty & \text{se }\alpha\leq 1
+            \end{cases}
+        \end{equation*}
+    \subsection{Serie geometrica}
+        Dato $q\in\mathbb{R}$, la serie geometrica di ragione $q$ 
+        \begin{equation*}
+            \sum_{n=1}^{\infty}q^n = \begin{cases}
+                +\infty & \text{se } q\geq 1\\
+                \frac{q}{1-q} & \text{se } |q|< 1\\
+                \text{indeterminata} & \text{se }q\leq -1
+            \end{cases}
+        \end{equation*}
+        \subsection{Test dell'integrale}
+            Sia $ f: [1, +\infty) \to \mathbb{R} $ una funzione:
+            \begin{itemize}
+                \item positiva
+                \item decrescente
+            \end{itemize}
+
+            Posto $a_n = f(n)$ per ogni $n \geq 1$, allora:
+
+            \begin{equation*}
+                \sum_{n=1}^{\infty} a_n \text{ converge } \iff \int_{1}^{+\infty} f(x)dx \text{ converge}
+            \end{equation*}
+
+            Inoltre, valgono le disuguaglianze:
+            \begin{equation*}
+                \int_{1}^{+\infty} f(x)dx \leq \sum_{n=1}^{\infty} a_n \leq a_1 + \int_{1}^{+\infty} f(x)dx
+            \end{equation*}
+    \subsection{Condizione necessaria di Cauchy per le serie}
+        \begin{equation*}
+            \lim_{n\rightarrow+\infty}a_n = \begin{cases}
+                0 & \Rightarrow \text{la serie \textbf{può} convergere o divergere} \\
+                \neq 0 \text{ o non esiste} & \Rightarrow \text{la serie \textbf{diverge} sicuramente}
+            \end{cases}
+        \end{equation*}
+        \textbf{Nota: } Questa condizione è \textbf{necessaria ma non sufficiente} alla convergenza della serie.
+    \subsection{Criteri di convergenza/divergenza}
+        \textit{Per serie a termini definitivamente positivi} ($\exists n | a_n\geq 0 \text{ con }n\in[n,+\infty)$)
+        \begin{itemize}
+            \item \textbf{Criterio del rapporto}: \begin{equation*}
+                \lim_{n\rightarrow +\infty}\frac{a_{n+1}}{a_n} = l \in [0,+\infty)\cup\{+\infty\}
+            \end{equation*} \begin{enumerate}
+                \item $l<1\Rightarrow$ la serie converge
+                \item $l>1\Rightarrow$ la serie diverge
+            \end{enumerate}
+            \item \textbf{Criterio della radice}: \begin{equation*}
+                \lim_{n\rightarrow+\infty}\sqrt[n]{a_n} = l \in [0,+\infty)\cup\{+\infty\}
+            \end{equation*} \begin{enumerate}
+                \item $l<1\Rightarrow$ la serie converge
+                \item $l>1\Rightarrow$ la serie diverge
+            \end{enumerate}
+            \item \textbf{Criterio del confronto}: supponiamo che $0\leq a_n\leq b_n$ allora \begin{equation*}
+                \begin{split}
+                    &\sum b_n \text{ converge} \Rightarrow \sum a_n \text{ converge}\\
+                    &\sum a_n \text{ diverge} \Rightarrow \sum b_n \text{ diverge}
+                \end{split}
+            \end{equation*}
+            \item \textbf{Criterio del confronto asintotico}: $a_n=c_nb_n$ dove $b_n,c_n\geq 0$ \begin{equation*}
+                \begin{split}
+                    &\lim_{n\rightarrow +\infty}c_n \in (0,+\infty) \Rightarrow \sum_{n=1}^{\infty}a_n \text{ e } \sum_{n=1}^{\infty}b_n \text{ hanno lo stesso carattere}\\
+                    &\lim_{n\rightarrow +\infty}c_n = 0 \text{ e } \sum_{n=1}^{\infty}b_n \text{ converge } \Rightarrow \sum_{n=1}^{\infty}a_n \text{ converge}\\
+                    &\lim_{n\rightarrow +\infty}c_n = l\in[0,+\infty)\cup\{+\infty\} \text{ e } \sum_{n=1}^{\infty}b_n \text{ diverge } \Rightarrow \sum_{n=1}^{\infty}a_n \text{ diverge}
+                \end{split}
+            \end{equation*}
+        \end{itemize}
+        \textit{Per serie a segno alterno}
+        \begin{itemize}
+            \item \textbf{Criterio di Leibnitz}: sia $\sum_{n=1}^{\infty}(-1)^{n+1}a_n = a_1-a_2+a_3-\ldots$ una serie tale che
+                \begin{enumerate}
+                    \item $a_n\geq 0\forall n\geq 1$
+                    \item $\lim_{n\rightarrow+\infty}a_n=0$
+                    \item $a_{n+1}\geq a_n \forall n\geq 1$
+                \end{enumerate}
+                allora converge e la somma $s$ della serie soddisfa $\left|s-s_n\right|\leq a_{n+1}\forall n\geq 1$.
+        \end{itemize}
+    \subsection{Convergenza assoluta}
+        \begin{equation*}
+            \sum_{n=1}^{\infty}a_n \text{ converge assolutamente se } \sum_{n=1}^{\infty}\left|a_n\right| \text{ converge}
+        \end{equation*}
+        Se la serie converge assolutamente, allora converge (semplicemente).
+%\section{Calcolare $a_k\forall k\geq0$}
+%\begin{itemize}
+%    \item Periodo $T$
+%    \item Formula generale: \begin{equation*}
+%        a_{k}=\hat{f_{k}}+\hat{f_{-k}}=\frac{2}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(x)\cos\left(\frac{2\pi}{T}kx\right)dx
+%    \end{equation*}
+%    \item Caso base: \begin{equation*}
+%        a_{0}=\frac{2}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(x)\cos(0)dx
+%    \end{equation*}
+%\end{itemize}
+%\section{Calcolare $\hat{f_{k}}$}
+%\begin{itemize}
+%    \item Formula: \begin{equation*}
+%        \frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(x)e^{-i\frac{2\pi}{T}kx}dx
+%    \end{equation*}
+%\end{itemize}
+\end{document}
