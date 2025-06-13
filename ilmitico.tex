@@ -6,7 +6,7 @@
 \begin{document}
 \section{Formula di Taylor}
     \customfbox{$f^{(n)}$ indica l'ordine di derivazione $n$-esimo}
-    Data una funzione $f:I\rightarrow\mathbb{R}$ definita su un intervallo $I$ e derivabile infinite volte
+    Data una funzione $f:I\rightarrow\mathbb{R}$ definita su un intervallo $I$ e derivabile infinite volte ($C^{\infty}$)
     \subsection{Polinomio di Taylor di $f$ centrato in $x_0$ di ordine $n$}
         \begin{equation*}
             \taylor{f}{x_0}{n}(x) = f(x_0)+f'(x_0)(x-x_0)+f''(x_0)\frac{(x-x_0)^2}{2!}+\ldots+f^{(n)}(x_0)\frac{(x-x_0)^n}{n!}
@@ -112,20 +112,115 @@
             \sum_{n=1}^{\infty}a_n \text{ converge assolutamente se } \sum_{n=1}^{\infty}\left|a_n\right| \text{ converge}
         \end{equation*}
         Se la serie converge assolutamente, allora converge (semplicemente).
-%\section{Calcolare $a_k\forall k\geq0$}
-%\begin{itemize}
-%    \item Periodo $T$
-%    \item Formula generale: \begin{equation*}
-%        a_{k}=\hat{f_{k}}+\hat{f_{-k}}=\frac{2}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(x)\cos\left(\frac{2\pi}{T}kx\right)dx
-%    \end{equation*}
-%    \item Caso base: \begin{equation*}
-%        a_{0}=\frac{2}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(x)\cos(0)dx
-%    \end{equation*}
-%\end{itemize}
-%\section{Calcolare $\hat{f_{k}}$}
-%\begin{itemize}
-%    \item Formula: \begin{equation*}
-%        \frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(x)e^{-i\frac{2\pi}{T}kx}dx
-%    \end{equation*}
-%\end{itemize}
+\section{Serie di Funzioni}
+    Data la serie di funzioni:
+    \begin{equation*}
+        f(x) = \sum_{n=1}^{\infty}f_n(x)
+    \end{equation*}
+    \begin{enumerate}
+        \item \textbf{Converge puntualmente} su $I$ se la serie converge $\forall x\in I$ e $f:I\rightarrow\mathbb{R}$
+        \item \textbf{Converge assolutamente} su $I$ se la serie a termini positivi $\left(\left|f_n(x)\right|\right)$ converge $\forall x\in I$
+    \end{enumerate}
+    \textit{Se per qualche $x\in I$ la serie diverge o è indeterminata, bisogna restringere il dominio della funzione somma $f(x)$ all'insieme:} \begin{equation*}
+        \left\{x\in I \mid \sum_{n=1}^{\infty}f_n(x) \text{ converge}\right\}
+    \end{equation*}
+    \subsection{Criterio di Weierstrass}
+        Data una serie di funzioni, se la serie numerica a termini positivi converge:
+        \begin{equation*}
+            \sum_{n=1}^{\infty}\sup_{x\in I}\left|f_n(x)\right|
+        \end{equation*}
+        allora la serie di funzioni converge assolutamente e puntualmente (= totalmente) su $I$.
+    \subsection{Corollari}
+        \subsubsection{Continuità della somma}
+            Se:
+            \begin{enumerate}
+                \item Le funzioni $f_n(x)$ sono continue su $I\forall n\geq 1$
+                \item La serie converge totalmente su $I$ ad $f(x)$  
+            \end{enumerate}
+            Allora $f(x)$ è continua su $I$.
+        \subsubsection{Integrazione temine a termine}
+            Data una serie di funzioni dove le funzioni $f_n(x)$ sono definite su $[a,b]$ se:
+            \begin{enumerate}
+                \item Le funzioni $f_n$ sono continue su $[a,b]\forall n\geq 1$
+                \item La serie converge totalmente su $[a,b]$ ad $f(x)$
+            \end{enumerate}
+            Allora $f(x)$ è integrabile in $[a,b]$:
+            \begin{equation*}
+                \int_{a}^{b}f(x)dx = \sum_{n=1}^{\infty}\int_{a}^{b}f_n(x)dx
+            \end{equation*}
+        \subsubsection{Derivazione termine a termine}
+            Data una serie di funzioni dove le funzioni $f_n(x)$ sono definite su $I$ se:
+            \begin{enumerate}
+                \item Le funzioni $f_n$ sono derivabili e le derivate sono funzioni continue $\forall n\geq 1$
+                \item La serie $\sum_{n=1}^{\infty}f_n(x)$ converge puntualmente su $I$
+                \item La serie $\sum_{n=1}^{\infty}f'_n(x)$ converge totalmente su $I$
+            \end{enumerate}
+            Allora $f(x)$ derivabile e:
+            \begin{equation*}
+                f'(x) = \sum_{n=1}^{\infty}f'_n(x) \quad \forall x\in I
+            \end{equation*}
+        \subsubsection{Corollario 1.34}
+            Data una serie di funzioni definite su $[a,b]$ se:
+            \begin{enumerate}
+                \item Le funzioni $f_n(x)$ sono continue su $[a,b]\forall n\geq 1$
+                \item La serie converge totalamente su $(a,b)$
+            \end{enumerate}
+            Allora la serie converge totalmente su su $[a,b]$ e la funzione somma è continua su $[a,b]$
+\section{Serie di potenze}
+    La serie di funzioni
+    \begin{equation*}
+        \sum_{n=0}^{\infty}a_n x^n
+    \end{equation*}            
+    si chiama \textbf{serie di potenze di centro 0}
+    \subsection{Raggio di convergenza}
+        Data una serie di potenze $\sum_{n=0}^{\infty}a_n x^n \, \exists p \in [0,+\infty)\cup\{+\infty\}$, detto raggio di convergenza, tale che:
+        \begin{itemize}
+            \item se $p=0 \Rightarrow$ la serie di potenze converge solo in 0
+            \item se $0<p<+\infty \Rightarrow$ la serie converge assolutamente su $(-p,p)$, non converge puntualmente su $(-\infty,p)\cup(p,+\infty)$, converge totalmente su $[-R,R] \,\forall 0<R<p$
+            \item se $p=+\infty \Rightarrow$ la serie di potenze converge assolutamente su $\mathbb{R}$ e converge totalmente\\
+            su $[-R,R] \, \forall R>0$
+        \end{itemize}
+        Se la serie converge puntualmente in $y\in\mathbb{R}, y\neq 0 \Rightarrow$ la serie converge totalmente su $[-R,R]\, \forall 0<R<\left|y\right|$.
+        \subsubsection{Caso: Criteri del rapporto e della radice}
+            Se esiste $l$:
+            \begin{equation*}
+                p=\begin{cases}
+                    +\infty & l = 0\\
+                    \frac{1}{l} & l\in(0,+\infty)\\
+                    0  & l = +\infty
+                \end{cases}
+            \end{equation*}
+    \subsection{Proprietà}
+    \begin{itemize}
+        \item La funzione somma \begin{equation*}
+            f:I\rightarrow \mathbb{R} \qquad f(x)=\sum_{n=0}^{\infty}a_nx^n
+        \end{equation*}
+        è continua su $I$
+        \item La funzione $f$ ammette primitiva sull'intervallo $I$ data da:
+        \begin{equation*}
+            \int f(x)dx = \int\left(\sum_{n=0}^{\infty}a_nx^n\right)dx=\sum_{n=0}^{\infty}a_n\frac{1}{n+1}x^{n+1}+c
+        \end{equation*}
+        dove la serie integrata ha raggio di convergenza $p$
+        \item La funzione $f$ è derivabile su $(-p,p)$ e vale \begin{equation*}
+            f'(x) = \left(\sum_{n=0}^{\infty}a_nx^n\right)'=\sum_{n=1}^{\infty}a_nnx^{n-1} \qquad x\in (-p,p)
+        \end{equation*}
+        dove la serie derivata ha raggio di convergenza $p$
+        \item Data una serie di potenze con  raggio di convergenza $p>0$ la funzione somma $f(x)$ è derivabile infinite volte in $(-p,p)\forall k\in\mathbb{N}k\geq 0$: \begin{equation*}
+            f^{(k)}(x)=\sum_{n=k}^{\infty}a_n\frac{n!}{(n-k)!}x^{n-k} \qquad x\in(-p,p)
+        \end{equation*}
+        In particolare: $f^{(n)}(0) = n!a_n \qquad n\in\mathbb{N}$
+        \item Abbiamo due serie di potenze di centro $x_0$ e raggi di convergenza $p_1>0$ e $p_2>0$, rispettivamente. Se esiste $0<\delta<\min\{p_1,p_2\}\mid\forall x\in(-\delta,\delta)$:
+        \begin{equation*}
+            \sum_{n=0}^{\infty}a_nx^n = \sum_{n=0}^{\infty}b_nx^n 
+        \end{equation*}
+        allora $a_n=b_n\forall n\in\mathbb{N}$
+        \item Sia $f: I\rightarrow\mathbb{R}$ con $I\subset\mathbb{R}$ tale che $f$ sia derivabile infinite volte in $I$.\\
+        Se esistono $M>0,L>0\mid\left|f^{(n)(x)}\right|\leq M\cdot L^n \,\forall n\in\mathbb{N},\forall x\in I$ allora, fissato $x_0\in I$:
+        \begin{equation*}
+            \sum_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n
+        \end{equation*}
+        si chiama serie di Taylor di $f$ con centro $x_0$ (se $x_0=0$ si chiama serie di Maclaurin). La funzione $f$ è sviluppabile in serie di Taylor con centro $x_0$ nell'intervallo $I$ se: \begin{equation*}
+            f(x) = \sum_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n \qquad \forall x\in I
+        \end{equation*}
+    \end{itemize}
 \end{document}
