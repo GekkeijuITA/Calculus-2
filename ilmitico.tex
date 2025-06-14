@@ -11,7 +11,6 @@
         \begin{equation*}
             \taylor{f}{x_0}{n}(x) = f(x_0)+f'(x_0)(x-x_0)+f''(x_0)\frac{(x-x_0)^2}{2!}+\ldots+f^{(n)}(x_0)\frac{(x-x_0)^n}{n!}
         \end{equation*}
-        % Eventuale esercizio qui
     \subsection{Formula di Taylor con resto di Lagrange}
         \begin{equation*}
             \begin{split}
@@ -20,46 +19,46 @@
             \end{split}
         \end{equation*}
         Se $x=b$ e $x_0$ è vicino a $b$, $\taylor{f}{x_0}{n}(b)$ approssima $f(b)$ e $\left|f(b)-\taylor{f}{x_0}{n}(b)\right| = \left|R_nf(b)\right|$
-        % Eventuale esercizio qui
     \subsection{Formula di Taylor con resti di Peano}
         \begin{equation*}
                 f(x)= \taylor{f}{x_0}{n}(x) + (x-x_0)^n + \varepsilon(x-x_0) \text{ con } \lim_{x\rightarrow x_0} \varepsilon(x-x_0) = 0
         \end{equation*}
-        % Eventuale esercizio qui
-\section{Determinare se una serie converge/diverge o è indeterminata}
-    \subsection{Serie armonica}
+\section{Serie armonica}
+    \begin{equation*}
+        \sum_{n=1}^{\infty}\frac{1}{n^\alpha} = \begin{cases}
+            \text{converge} & \text{se }\alpha > 1\\
+            +\infty & \text{se }\alpha\leq 1
+        \end{cases}
+    \end{equation*}
+\section{Serie geometrica}
+    Dato $q\in\mathbb{R}$, la serie geometrica di ragione $q$ 
+    \begin{equation*}
+        \sum_{n=1}^{\infty}q^n = \begin{cases}
+            +\infty & \text{se } q\geq 1\\
+            \frac{q}{1-q} & \text{se } |q|< 1\\
+            \text{indeterminata} & \text{se }q\leq -1
+        \end{cases}
+    \end{equation*}
+\section{Convergenza/Divergenza}
+    %\subsection{Test dell'integrale}
+    %        Sia $ f: [1, +\infty) \to \mathbb{R} $ una funzione:
+    %        \begin{itemize}
+    %            \item positiva
+    %            \item decrescente
+    %        \end{itemize}
+    %        Posto $a_n = f(n)$ per ogni $n \geq 1$, allora:
+    %        \begin{equation*}
+    %            \sum_{n=1}^{\infty} a_n \text{ converge } \iff \int_{1}^{+\infty} f(x)dx \text{ converge}
+    %        \end{equation*}
+    %        Inoltre, valgono le disuguaglianze:
+    %        \begin{equation*}
+    %            \int_{1}^{+\infty} f(x)dx \leq \sum_{n=1}^{\infty} a_n \leq a_1 + \int_{1}^{+\infty} f(x)dx
+    %        \end{equation*}
+    \subsection{Convergenza assoluta}
         \begin{equation*}
-            \sum_{n=1}^{\infty}\frac{1}{n^\alpha} = \begin{cases}
-                \text{converge} & \text{se }\alpha > 1\\
-                +\infty & \text{se }\alpha\leq 1
-            \end{cases}
+            \sum_{n=1}^{\infty}a_n \text{ converge assolutamente se } \sum_{n=1}^{\infty}\left|a_n\right| \text{ converge}
         \end{equation*}
-    \subsection{Serie geometrica}
-        Dato $q\in\mathbb{R}$, la serie geometrica di ragione $q$ 
-        \begin{equation*}
-            \sum_{n=1}^{\infty}q^n = \begin{cases}
-                +\infty & \text{se } q\geq 1\\
-                \frac{q}{1-q} & \text{se } |q|< 1\\
-                \text{indeterminata} & \text{se }q\leq -1
-            \end{cases}
-        \end{equation*}
-        \subsection{Test dell'integrale}
-            Sia $ f: [1, +\infty) \to \mathbb{R} $ una funzione:
-            \begin{itemize}
-                \item positiva
-                \item decrescente
-            \end{itemize}
-
-            Posto $a_n = f(n)$ per ogni $n \geq 1$, allora:
-
-            \begin{equation*}
-                \sum_{n=1}^{\infty} a_n \text{ converge } \iff \int_{1}^{+\infty} f(x)dx \text{ converge}
-            \end{equation*}
-
-            Inoltre, valgono le disuguaglianze:
-            \begin{equation*}
-                \int_{1}^{+\infty} f(x)dx \leq \sum_{n=1}^{\infty} a_n \leq a_1 + \int_{1}^{+\infty} f(x)dx
-            \end{equation*}
+        Se la serie converge assolutamente $\Rightarrow$ converge semplicemente.
     \subsection{Condizione necessaria di Cauchy per le serie}
         \begin{equation*}
             \lim_{n\rightarrow+\infty}a_n = \begin{cases}
@@ -71,47 +70,83 @@
     \subsection{Criteri di convergenza/divergenza}
         \textit{Per serie a termini definitivamente positivi} ($\exists n | a_n\geq 0 \text{ con }n\in[n,+\infty)$)
         \begin{itemize}
-            \item \textbf{Criterio del rapporto}: \begin{equation*}
+            \item \textbf{Criterio del rapporto} (Utile con i fattoriali $n!$): \begin{equation*}
                 \lim_{n\rightarrow +\infty}\frac{a_{n+1}}{a_n} = l \in [0,+\infty)\cup\{+\infty\}
             \end{equation*} \begin{enumerate}
-                \item $l<1\Rightarrow$ la serie converge
+                \item $l<1\Rightarrow$ la serie converge assolutamente
                 \item $l>1\Rightarrow$ la serie diverge
             \end{enumerate}
-            \item \textbf{Criterio della radice}: \begin{equation*}
+            \item \textbf{Criterio della radice} (Utile con potenze $n$-esime): \begin{equation*}
                 \lim_{n\rightarrow+\infty}\sqrt[n]{a_n} = l \in [0,+\infty)\cup\{+\infty\}
             \end{equation*} \begin{enumerate}
-                \item $l<1\Rightarrow$ la serie converge
+                \item $l<1\Rightarrow$ la serie converge assolutamente
                 \item $l>1\Rightarrow$ la serie diverge
             \end{enumerate}
-            \item \textbf{Criterio del confronto}: supponiamo che $0\leq a_n\leq b_n$ allora \begin{equation*}
-                \begin{split}
-                    &\sum b_n \text{ converge} \Rightarrow \sum a_n \text{ converge}\\
-                    &\sum a_n \text{ diverge} \Rightarrow \sum b_n \text{ diverge}
-                \end{split}
+            %\item \textbf{Criterio del confronto}: supponiamo che $0\leq a_n\leq b_n$ allora \begin{equation*}
+            %    \begin{split}
+            %        &\sum b_n \text{ converge} \Rightarrow \sum a_n \text{ converge}\\
+            %        &\sum a_n \text{ diverge} \Rightarrow \sum b_n \text{ diverge}
+            %    \end{split}
+            %\end{equation*}
+            \item \textbf{Criterio del confronto asintotico}:
+            \begin{equation*}
+                \lim_{n\rightarrow +\infty}\frac{a_n}{b_n} = L \begin{cases}
+                    \in (0,+\infty) & a_n \text{ e } b_n \text{ hanno lo stesso comportamento}\\
+                    0 & \text{se } b_n \text{ converge} \Rightarrow a_n \text{ converge, altrimenti non si può concludere}\\
+                    +\infty & \text{se } b_n \text{ diverge} \Rightarrow a_n \text{ diverge, altrimenti non si può concludere}\\
+                \end{cases}
             \end{equation*}
-            \item \textbf{Criterio del confronto asintotico}: $a_n=c_nb_n$ dove $b_n,c_n\geq 0$ \begin{equation*}
-                \begin{split}
-                    &\lim_{n\rightarrow +\infty}c_n \in (0,+\infty) \Rightarrow \sum_{n=1}^{\infty}a_n \text{ e } \sum_{n=1}^{\infty}b_n \text{ hanno lo stesso carattere}\\
-                    &\lim_{n\rightarrow +\infty}c_n = 0 \text{ e } \sum_{n=1}^{\infty}b_n \text{ converge } \Rightarrow \sum_{n=1}^{\infty}a_n \text{ converge}\\
-                    &\lim_{n\rightarrow +\infty}c_n = l\in[0,+\infty)\cup\{+\infty\} \text{ e } \sum_{n=1}^{\infty}b_n \text{ diverge } \Rightarrow \sum_{n=1}^{\infty}a_n \text{ diverge}
-                \end{split}
-            \end{equation*}
+            Per scegliere $b_n$ prendi le $n$ di ordine maggiore in $a_n=\frac{\text{num}}{\text{den}}$ (\textit{es.} $a_n=\frac{n+1}{n^2+3}, b_n=\frac{n}{n^2}=\frac{1}{n}$)
         \end{itemize}
         \textit{Per serie a segno alterno}
         \begin{itemize}
             \item \textbf{Criterio di Leibnitz}: sia $\sum_{n=1}^{\infty}(-1)^{n+1}a_n = a_1-a_2+a_3-\ldots$ una serie tale che
                 \begin{enumerate}
-                    \item $a_n\geq 0\forall n\geq 1$
+                    \item $\exists n_0\mid a_n\geq 0\,\forall n\geq n_0$
                     \item $\lim_{n\rightarrow+\infty}a_n=0$
-                    \item $a_{n+1}\geq a_n \forall n\geq 1$
+                    \item $a_{n+1}\geq a_n \forall n\geq 1$ (aka decrescente)
                 \end{enumerate}
-                allora converge e la somma $s$ della serie soddisfa $\left|s-s_n\right|\leq a_{n+1}\forall n\geq 1$.
+                allora converge \textbf{semplicemente} e la somma $s$ della serie soddisfa $\left|s-s_n\right|\leq a_{n+1}\forall n\geq 1$.
+            \item \textbf{Stima dell'errore}: $\left|\text{Somma} - \text{Somma parziale}\right|\leq b_{N+1}$
         \end{itemize}
-    \subsection{Convergenza assoluta}
-        \begin{equation*}
-            \sum_{n=1}^{\infty}a_n \text{ converge assolutamente se } \sum_{n=1}^{\infty}\left|a_n\right| \text{ converge}
-        \end{equation*}
-        Se la serie converge assolutamente, allora converge (semplicemente).
+    \newpage
+    \subsection{Esercizio d'esame}
+        \textit{Stabilire se le seguenti serie sono a termini positivi e convergono semplicemente e/o assolutamente.}
+        \begin{enumerate}
+            \item $\sum_{n=1}^{+\infty}(-1)^{n+1}\sin\left(\frac{1001}{\sqrt{n}}\right)$ \begin{enumerate}
+                \item \textbf{Cauchy}: $\lim_{n\rightarrow+\infty}\sin\left(\frac{1001}{\sqrt{n}}\right)=\sin\left(\frac{1001}{\infty}\right)=\sin(0)=0$
+                \item \textbf{Convergenza assoluta}: $\sum_{n=1}^{+\infty}\left|(-1)^{n+1}\sin\left(\frac{1001}{\sqrt{n}}\right)\right|=\sum_{n=1}^{+\infty}\sin\left(\frac{1001}{\sqrt{n}}\right)$ \begin{enumerate}
+                    \item \textbf{Criterio di confronto asintotico}: \scriptsize$a_n = \sin\left(\frac{1001}{\sqrt{n}}\right), b_n = \frac{1001}{\sqrt{n}} \rightarrow \lim_{n\rightarrow+\infty}\frac{a_n}{b_n}=\lim_{n\rightarrow+\infty}\frac{\sin\left(\frac{1001}{\sqrt{n}}\right)}{\frac{1001}{\sqrt{n}}}=1$\normalsize \\ $\rightarrow$ $a_n$ e $b_n$ hanno lo stesso comportamento.
+                    \item \textbf{Serie armonica generalizzata}: $\frac{1001}{\sqrt{n}}\rightarrow\alpha=\frac{1}{2}\Rightarrow$ diverge
+                    \item Grazie al punto precedente possiamo dire che la serie originale non converge assolutamente (perchè è una serie a segno alternato), ora procederemo con Leibnitz
+                \end{enumerate}
+                \item \textbf{Criterio di Leibnitz}: \begin{enumerate}
+                    \item $\exists n_0\mid \sin\left(\frac{1001}{\sqrt{n}}\right)\geq 0\,\forall n\geq n_0?$ Si: $0<\frac{1001}{\sqrt{n}}\leq\pi\rightarrow n\geq\left(\frac{1001}{\pi}\right)^2\rightarrow n_0\simeq 101518.7$
+                    \item $\lim_{n\rightarrow+\infty}\sin\left(\frac{1001}{\sqrt{n}}\right)=0?$ L'abbiamo già fatto nel punto (a)
+                    \item Decrescente? \begin{enumerate}
+                        \item $a_n'=\cos\left(\frac{1001}{\sqrt{n}}\right)\cdot\left(-\frac{1001}{2\sqrt{n}}\cdot\frac{1}{n}\right)=\cos\left(\frac{1001}{\sqrt{n}}\right)\cdot\left(-\frac{1001}{2n^{\frac{1}{2}}n}\right)=\cos\left(\frac{1001}{\sqrt{n}}\right)\cdot\left(-\frac{1001}{2n^{\frac{3}{2}}}\right)$
+                        \item $a'_n>0\begin{cases}
+                            \cos\left(\frac{1001}{\sqrt{n}}\right)>0\rightarrow -\frac{\pi}{2}\leq\frac{1001}{\sqrt{n}}\leq\frac{\pi}{2}\rightarrow n \geq 406269\\
+                            \left(-\frac{1001}{2n^{\frac{3}{2}}}\right)>0\rightarrow \text{Impossibile sarà sempre negativo perchè } n\geq 1
+                        \end{cases}$
+                        \item Quindi sapendo che la serie è decrescente con $n\geq 406269$, possiamo dire che anche questo requisito è soddisfatto
+                    \end{enumerate}
+                \end{enumerate}
+                \item \textbf{Conclusione}: visto che la serie soddisfa tutti i requisiti del criterio di Leibnitz allora converge semplicemente.
+            \end{enumerate}
+            \item $\sum_{n=1}^{+\infty}\frac{n(3-(\cos n)^2)}{n^3+2n+1}$
+            \item \textit{Data la serie di potenze} $\sum_{n=1}^{+\infty}\frac{2^n+3^{-n}}{n^2}x^n$ \textit{determinare il raggio di convergenza $\rho$ e l'insieme di convergenza puntuale I}.
+        \end{enumerate}
+\section{Polinomio di McLaurin}
+    Per calcolare il polinomio di McLaurin di ordine $k$:
+    \begin{enumerate}
+        \item Prendi i polinomi elementari dalla tabella adattandoli a quelli che servono (considera il polinomio separando $f(x)$ con i +/-)
+        \item Una volta che hai i polinomi di ordine $k$ li combini tra di loro e il risultato finale sarà $P_k(x)$
+    \end{enumerate}
+    \begin{center}
+        \includegraphics[width = \textwidth]{Images/seriedimaclaurin.png}
+    \end{center}
+    \subsection{Esercizio da esame}
 \section{Serie di Funzioni}
     Data la serie di funzioni:
     \begin{equation*}
@@ -190,6 +225,11 @@
                     0  & l = +\infty
                 \end{cases}
             \end{equation*}
+    \subsection{Insieme di convergenza puntuale $I=(-p,p)$}
+        \begin{enumerate}
+            \item Sostituire $x^n$ con gli estremi di $\left[x_0-p,x_0+p\right]$ e quindi "creare" due serie diverse e studiare la convergenza/divergenza
+            \item Se converge per entrambi allora converge su tutto l'intervallo, altrimenti devo mettere la parentesi tonda dove non converge
+        \end{enumerate}
     \subsection{Proprietà}
     \begin{itemize}
         \item La funzione somma \begin{equation*}
