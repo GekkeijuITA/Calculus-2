@@ -297,9 +297,7 @@
         \item Prendi i polinomi elementari dalla tabella adattandoli a quelli che servono (considera il polinomio separando $f(x)$ con i +/-)
         \item Una volta che hai i polinomi di ordine $k$ li combini tra di loro e il risultato finale sarà $P_k(x)$
     \end{enumerate}
-    \begin{center}
-        \includegraphics[width = \textwidth]{Images/seriedimaclaurin.png}
-    \end{center}
+    \includegraphics[width = \textwidth]{Images/seriedimaclaurin.png}
     \subsection{Esercizio da esame}
         \begin{itemize}
             \item \textit{Data la funzione $f(x)=x(e^x-1)+\ln(1+x^2)+\sin(2x)$, calcolarne il polinomio di McLaurin di ordine 4} \begin{enumerate}
@@ -327,7 +325,9 @@
                 Dove andiamo a prendere gli elementi di ciascun polinomio dell'ordine indicato nella prima colonna ed eseguiamo la somma della riga nell'ultima colonna.
                 \item Poi costruiamo il polinomio $P_4(x)$ sommando l'ultima colonna: $P_4(x)=2x+2x^2-\frac{5x^3}{6}-\frac{x^4}{3}$
             \end{enumerate}
-            \item \textit{Scrivere il resto di Lagrange $R_1(x)$ di ordine 1 (con centro in 0) della funzione $g(x)=\cos(x^2)+\sin(3x)$ e determinarne una stima per $x\in(0,\frac{1}{4}]$}
+            \item \textit{Scrivere il resto di Lagrange $R_1(x)$ di ordine 1 (con centro in 0) della funzione $g(x)=\cos(x^2)+\sin(3x)$ e determinarne una stima per $x\in(0,\frac{1}{4}]$} \begin{enumerate}
+                \item %FAI QUESTO
+            \end{enumerate}
         \end{itemize}
 \section{Formula di Taylor}
     \customfbox{$f^{(n)}$ indica l'ordine di derivazione $n$-esimo}
@@ -348,6 +348,8 @@
         \begin{equation*}
                 f(x)= \taylor{f}{x_0}{n}(x) + (x-x_0)^n + \varepsilon(x-x_0) \text{ con } \lim_{x\rightarrow x_0} \varepsilon(x-x_0) = 0
         \end{equation*}
+    \includegraphics[width=0.8\textwidth]{Images/serieditaylor.png}
+\newpage
 \section{Fourier}
     \subsection{Coefficienti}
         Data una funzione $f$ periodica di periodo $T$, i coefficienti di Fourier sono dati da:
@@ -368,9 +370,9 @@
             \item Se $f(x)$ è dispari $\Rightarrow a_k$ nulli tranne $a_0=0$
         \end{itemize}
     \subsection{Calcolare il valore della serie di Fourier}
-        \begin{equation}
+        \begin{equation*}
             f(x)\sim \frac{a_0}{2}+\sum_{k=1}^{+\infty}\left[a_k\cos\left(\frac{2\pi k}{T}x\right)+b_k\sin\left(\frac{2\pi k}{T}x\right)\right]
-        \end{equation}
+        \end{equation*}
     \subsection{Esercizio d'esame}
     \textit{Sia $f$ la funzione ottenuta estendendo per periodicità a tutto $\mathbb{R}$ la funzione} \begin{equation*}
         g(x)=\begin{cases}
@@ -405,7 +407,7 @@
                 \end{split}
             \end{equation*}
             \item Sostituiamo $a_0, a_k \text{ e } b_k$ con quelli calcolati in precedenza \begin{equation*}
-                f(x)\sim \frac{3\pi}{2}+\sum_{k=1}^{+\infty}\left[\frac{2}{\pi k^2}[1-(-1)^k]\cos\left(kx\right)\right]                
+                f(x) \sim \frac{3\pi}{2}+\sum_{k=1}^{+\infty}\left[\frac{2}{\pi k^2}[1-(-1)^k]\cos\left(kx\right)\right]                
             \end{equation*}
         \end{enumerate}
     \end{itemize}
@@ -477,14 +479,15 @@
                     \end{pmatrix}
                 \end{equation*}
                 \item Calcolo il determinante: $D(x,y)=f_{xx}(x,y)\cdot f_{yy}(x,y)-\left(f_{xy}(x,y)\right)^2$
-                \item Per ogni punto critico $(x_0,y_0)$ calcolo $D(x_0,y_0)$ \begin{itemize}
-                    \item $D(x_0,y_0)>0$ \begin{itemize}
-                        \item $f_{xx}(x_0,y_0)>0$: Il punto è un minimo locale
-                        \item $f_{xx}(x_0,y_0)<0$: Il punto è un massimo locale
-                    \end{itemize}
-                    \item $D(x_0,y_0)<0$: punto di sella
-                    \item $D(x_0,y_0)=0$: test inconcludente
-                \end{itemize}
+                \item Per ogni punto critico $(x_0,y_0)$ calcolo $D(x_0,y_0)$:
+                \\\begin{tabular}{| c | c | c |}
+                    \hline
+                    $D(x_0,y_0)>0$ & $D(x_0,y_0)<0$ & $D(x_0,y_0)=0$\\
+                    \hline
+                        Minimo locale ($f_{xx}(x_0,y_0)>0$) & Punto di sella & Test inconcludente \\
+                        Massimo locale ($f_{xx}(x_0,y_0)<0$) & & \\
+                    \hline
+                \end{tabular}
             \end{enumerate}
     \subsection{Esercizio da esame}
     \textit{Sia $f(x,y)=\frac{3}{2}x^2-8x-4xy+4y^2+12\ln x$}
