@@ -1,28 +1,9 @@
-\documentclass[12pt, a4paper]{article}
+\documentclass[10pt, a4paper]{article}
 \usepackage[utf8]{inputenc}
 \input{variables.tex}
 \preamble
 
 \begin{document}
-\section{Formula di Taylor}
-    \customfbox{$f^{(n)}$ indica l'ordine di derivazione $n$-esimo}
-    Data una funzione $f:I\rightarrow\mathbb{R}$ definita su un intervallo $I$ e derivabile infinite volte ($C^{\infty}$)
-    \subsection{Polinomio di Taylor di $f$ centrato in $x_0$ di ordine $n$}
-        \begin{equation*}
-            \taylor{f}{x_0}{n}(x) = f(x_0)+f'(x_0)(x-x_0)+f''(x_0)\frac{(x-x_0)^2}{2!}+\ldots+f^{(n)}(x_0)\frac{(x-x_0)^n}{n!}
-        \end{equation*}
-    \subsection{Formula di Taylor con resto di Lagrange}
-        \begin{equation*}
-            \begin{split}
-                &f(x) = \taylor{f}{x_0}{n}(x) + R_nf(x)\\
-                &R_nf(x) = \frac{f^{(n+1)}(c_n)(x-x_0)^{n+1}}{(n+1)!} \text{ con } c_n\in\{x_0,x\}
-            \end{split}
-        \end{equation*}
-        Se $x=b$ e $x_0$ è vicino a $b$, $\taylor{f}{x_0}{n}(b)$ approssima $f(b)$ e $\left|f(b)-\taylor{f}{x_0}{n}(b)\right| = \left|R_nf(b)\right|$
-    \subsection{Formula di Taylor con resti di Peano}
-        \begin{equation*}
-                f(x)= \taylor{f}{x_0}{n}(x) + (x-x_0)^n + \varepsilon(x-x_0) \text{ con } \lim_{x\rightarrow x_0} \varepsilon(x-x_0) = 0
-        \end{equation*}
 \section{Serie armonica}
     \begin{equation*}
         \sum_{n=1}^{\infty}\frac{1}{n^\alpha} = \begin{cases}
@@ -39,6 +20,130 @@
             \text{indeterminata} & \text{se }q\leq -1
         \end{cases}
     \end{equation*}
+\section{Serie di Funzioni}
+    Data la serie di funzioni:
+    \begin{equation*}
+        f(x) = \sum_{n=1}^{\infty}f_n(x)
+    \end{equation*}
+    \begin{enumerate}
+        \item \textbf{Converge puntualmente} su $I$ se la serie converge $\forall x\in I$ e $f:I\rightarrow\mathbb{R}$
+        \item \textbf{Converge assolutamente} su $I$ se la serie a termini positivi $\left(\left|f_n(x)\right|\right)$ converge $\forall x\in I$
+    \end{enumerate}
+    \textit{Se per qualche $x\in I$ la serie diverge o è indeterminata, bisogna restringere il dominio della funzione somma $f(x)$ all'insieme:} \begin{equation*}
+        \left\{x\in I \mid \sum_{n=1}^{\infty}f_n(x) \text{ converge}\right\}
+    \end{equation*}
+    \subsection{Criterio di Weierstrass}
+        Data una serie di funzioni, se la serie numerica a termini positivi converge:
+        \begin{equation*}
+            \sum_{n=1}^{\infty}\sup_{x\in I}\left|f_n(x)\right|
+        \end{equation*}
+        allora la serie di funzioni converge assolutamente e puntualmente (= totalmente) su $I$.
+    \subsection{Flusso di lavoro:}
+    \begin{enumerate}
+        \item \textbf{Criterio di Weierstrass} per la convergenza totale
+        \item \textbf{Controllo la convergenza puntuale} se Weierstrass ha fallito
+    \end{enumerate}
+    \customfbox{Convergenza totale $\Rightarrow$ convergenza puntuale}
+    \subsection{Corollari}
+        \subsubsection{Continuità della somma}
+            Se:
+            \begin{enumerate}
+                \item Le funzioni $f_n(x)$ sono continue su $I\forall n\geq 1$
+                \item La serie converge totalmente su $I$ ad $f(x)$  
+            \end{enumerate}
+            Allora $f(x)$ è continua su $I$.
+        \subsubsection{Integrazione temine a termine}
+            Data una serie di funzioni dove le funzioni $f_n(x)$ sono definite su $[a,b]$ se:
+            \begin{enumerate}
+                \item Le funzioni $f_n$ sono continue su $[a,b]\forall n\geq 1$
+                \item La serie converge totalmente su $[a,b]$ ad $f(x)$
+            \end{enumerate}
+            Allora $f(x)$ è integrabile in $[a,b]$:
+            \begin{equation*}
+                \int_{a}^{b}f(x)dx = \sum_{n=1}^{\infty}\int_{a}^{b}f_n(x)dx
+            \end{equation*}
+        \subsubsection{Derivazione termine a termine}
+            Data una serie di funzioni dove le funzioni $f_n(x)$ sono definite su $I$ se:
+            \begin{enumerate}
+                \item Le funzioni $f_n$ sono derivabili e le derivate sono funzioni continue $\forall n\geq 1$
+                \item La serie $\sum_{n=1}^{\infty}f_n(x)$ converge puntualmente su $I$
+                \item La serie $\sum_{n=1}^{\infty}f'_n(x)$ converge totalmente su $I$
+            \end{enumerate}
+            Allora $f(x)$ derivabile e:
+            \begin{equation*}
+                f'(x) = \sum_{n=1}^{\infty}f'_n(x) \quad \forall x\in I
+            \end{equation*}
+        \subsubsection{Corollario 1.34}
+            Data una serie di funzioni definite su $[a,b]$ se:
+            \begin{enumerate}
+                \item Le funzioni $f_n(x)$ sono continue su $[a,b]\forall n\geq 1$
+                \item La serie converge totalamente su $(a,b)$
+            \end{enumerate}
+            Allora la serie converge totalmente su $[a,b]$ e la funzione somma è continua su $[a,b]$
+\section{Serie di potenze}
+    La serie di funzioni
+    \begin{equation*}
+        \sum_{n=0}^{\infty}a_n x^n
+    \end{equation*}            
+    si chiama \textbf{serie di potenze di centro 0}
+    \subsection{Raggio di convergenza}
+        Data una serie di potenze $\sum_{n=0}^{\infty}a_n x^n \, \exists p \in [0,+\infty)\cup\{+\infty\}$, detto raggio di convergenza, tale che:
+        \begin{itemize}
+            \item se $p=0 \Rightarrow$ la serie di potenze converge solo in 0
+            \item se $0<p<+\infty \Rightarrow$ la serie converge assolutamente su $(-p,p)$, non converge puntualmente su $(-\infty,p)\cup(p,+\infty)$, converge totalmente su $[-R,R] \,\forall 0<R<p$
+            \item se $p=+\infty \Rightarrow$ la serie di potenze converge assolutamente su $\mathbb{R}$ e converge totalmente\\
+            su $[-R,R] \, \forall R>0$
+        \end{itemize}
+        Se la serie converge puntualmente in $y\in\mathbb{R}, y\neq 0 \Rightarrow$ la serie converge totalmente su $[-R,R]\, \forall 0<R<\left|y\right|$.
+        \subsubsection{Caso: Criteri del rapporto e della radice}
+            Se esiste $l$:
+            \begin{equation*}
+                p=\begin{cases}
+                    +\infty & l = 0\\
+                    \frac{1}{l} & l\in(0,+\infty)\\
+                    0  & l = +\infty
+                \end{cases}
+            \end{equation*}
+    \subsection{Insieme di convergenza puntuale $I=(-p,p)$}
+        \begin{enumerate}
+            \item Sostituire $x^n$ con gli estremi di $\left[x_0-p,x_0+p\right]$ e quindi "creare" due serie diverse e studiare la convergenza/divergenza
+            \item Se converge per entrambi allora converge su tutto l'intervallo, altrimenti devo mettere la parentesi tonda dove non converge
+        \end{enumerate}
+    \iffalse
+    \subsection{Proprietà}
+    \begin{itemize}
+        \item La funzione somma \begin{equation*}
+            f:I\rightarrow \mathbb{R} \qquad f(x)=\sum_{n=0}^{\infty}a_nx^n
+        \end{equation*}
+        è continua su $I$
+        \item La funzione $f$ ammette primitiva sull'intervallo $I$ data da:
+        \begin{equation*}
+            \int f(x)dx = \int\left(\sum_{n=0}^{\infty}a_nx^n\right)dx=\sum_{n=0}^{\infty}a_n\frac{1}{n+1}x^{n+1}+c
+        \end{equation*}
+        dove la serie integrata ha raggio di convergenza $p$
+        \item La funzione $f$ è derivabile su $(-p,p)$ e vale \begin{equation*}
+            f'(x) = \left(\sum_{n=0}^{\infty}a_nx^n\right)'=\sum_{n=1}^{\infty}a_nnx^{n-1} \qquad x\in (-p,p)
+        \end{equation*}
+        dove la serie derivata ha raggio di convergenza $p$
+        \item Data una serie di potenze con  raggio di convergenza $p>0$ la funzione somma $f(x)$ è derivabile infinite volte in $(-p,p)\forall k\in\mathbb{N}k\geq 0$: \begin{equation*}
+            f^{(k)}(x)=\sum_{n=k}^{\infty}a_n\frac{n!}{(n-k)!}x^{n-k} \qquad x\in(-p,p)
+        \end{equation*}
+        In particolare: $f^{(n)}(0) = n!a_n \qquad n\in\mathbb{N}$
+        \item Abbiamo due serie di potenze di centro $x_0$ e raggi di convergenza $p_1>0$ e $p_2>0$, rispettivamente. Se esiste $0<\delta<\min\{p_1,p_2\}\mid\forall x\in(-\delta,\delta)$:
+        \begin{equation*}
+            \sum_{n=0}^{\infty}a_nx^n = \sum_{n=0}^{\infty}b_nx^n 
+        \end{equation*}
+        allora $a_n=b_n\forall n\in\mathbb{N}$
+        \item Sia $f: I\rightarrow\mathbb{R}$ con $I\subset\mathbb{R}$ tale che $f$ sia derivabile infinite volte in $I$.\\
+        Se esistono $M>0,L>0\mid\left|f^{(n)(x)}\right|\leq M\cdot L^n \,\forall n\in\mathbb{N},\forall x\in I$ allora, fissato $x_0\in I$:
+        \begin{equation*}
+            \sum_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n
+        \end{equation*}
+        si chiama serie di Taylor di $f$ con centro $x_0$ (se $x_0=0$ si chiama serie di Maclaurin). La funzione $f$ è sviluppabile in serie di Taylor con centro $x_0$ nell'intervallo $I$ se: \begin{equation*}
+            f(x) = \sum_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n \qquad \forall x\in I
+        \end{equation*}
+    \end{itemize}
+    \fi
 \section{Convergenza/Divergenza}
     %\subsection{Test dell'integrale}
     %        Sia $ f: [1, +\infty) \to \mathbb{R} $ una funzione:
@@ -97,9 +202,11 @@
                 \end{cases}
             \end{equation*}
             Per scegliere $b_n$ prendi le $n$ di ordine maggiore in $a_n=\frac{\text{num}}{\text{den}}$ (\textit{es.} $a_n=\frac{n+1}{n^2+3}, b_n=\frac{n}{n^2}=\frac{1}{n}$)
-        \end{itemize}
-        \textit{Per serie a segno alterno}
-        \begin{itemize}
+            \item \textbf{Criterio di Dirichlet}: sia $\sum_{n=1}^{\infty}a_nb_n$ \begin{enumerate}
+                \item $\exists M>0\mid \left|\sum_{n=1}^{N}a_n\right|\leq M\,\forall N\geq 1$
+                \item $b_n$ crescente/decrescente
+                \item $\lim_{n\rightarrow+\infty}b_n=0$
+            \end{enumerate}
             \item \textbf{Criterio di Leibnitz}: sia $\sum_{n=1}^{\infty}(-1)^{n+1}a_n = a_1-a_2+a_3-\ldots$ una serie tale che
                 \begin{enumerate}
                     \item $\exists n_0\mid a_n\geq 0\,\forall n\geq n_0$
@@ -109,6 +216,9 @@
                 allora converge \textbf{semplicemente} e la somma $s$ della serie soddisfa $\left|s-s_n\right|\leq a_{n+1}\forall n\geq 1$.
             \item \textbf{Stima dell'errore}: $\left|\text{Somma} - \text{Somma parziale}\right|\leq b_{N+1}$
         \end{itemize}
+        \begin{center}
+            \includegraphics[width=.8\textwidth]{Images/convergenzaflowchart.png}
+        \end{center}
     \newpage
     \subsection{Esercizio d'esame}
         \textit{Stabilire se le seguenti serie sono a termini positivi e convergono semplicemente e/o assolutamente.}
@@ -134,8 +244,52 @@
                 \end{enumerate}
                 \item \textbf{Conclusione}: visto che la serie soddisfa tutti i requisiti del criterio di Leibnitz allora converge semplicemente.
             \end{enumerate}
-            \item $\sum_{n=1}^{+\infty}\frac{n(3-(\cos n)^2)}{n^3+2n+1}$
-            \item \textit{Data la serie di potenze} $\sum_{n=1}^{+\infty}\frac{2^n+3^{-n}}{n^2}x^n$ \textit{determinare il raggio di convergenza $\rho$ e l'insieme di convergenza puntuale I}.
+            \item $\sum_{n=1}^{+\infty}\frac{n(3-(\cos n)^2)}{n^3+2n+1}$ \begin{enumerate}
+                \item \textbf{Cauchy}: $\lim_{n\rightarrow+\infty}\frac{n(3-(\cos n)^2)}{n^3+2n+1}=0$
+                \item \textbf{Convergenza assoluta}: $\sum_{n=1}^{+\infty}\left|\frac{n(3-(\cos n)^2)}{n^3+2n+1}\right|$ \begin{enumerate}
+                    \item \textbf{Criterio di confronto asintotico:} $a_n=\frac{n(3-(\cos n)^2)}{n^3+2n+1}, b_n=\frac{1}{n^2}$ \begin{equation*}
+                            \lim_{n\rightarrow+\infty}\frac{a_n}{b_n}=\lim_{n\rightarrow+\infty}\frac{\frac{n(3-(\cos n)^2)}{n^3+2n+1}}{\frac{1}{n^2}}=\lim_{n\rightarrow+\infty}\frac{n^3\left(3-(\cos n)^2\right)}{n^3+2n+1} = \lim_{n\rightarrow+\infty}\frac{\left(3-(\cos n)^2\right)}{1+\frac{2}{n^2}+\frac{1}{n^3}}=3
+                    \end{equation*}
+                    \item \textbf{Serie armonica generalizzata}: $\frac{1}{n^2}\rightarrow  \alpha=2\Rightarrow b_n$ converge
+                \end{enumerate}
+                \item \textbf{Conclusione:} Grazie al punto precedente e al teorema del confronto possiamo affermare che la serie converge assolutamente e, di conseguenza, semplicemente.
+            \end{enumerate}
+            \item \textit{Data la serie di potenze} $\sum_{n=1}^{+\infty}\frac{2^n+3^{-n}}{n^2}x^n$ \textit{determinare il raggio di convergenza $\rho$ e l'insieme di convergenza puntuale I}. \begin{enumerate}
+                \item \textbf{Cauchy}: $\lim_{n\rightarrow+\infty}\frac{2^n+3^{-n}}{n^2}=0$
+                \item \textbf{Convergenza assoluta}: $\sum_{n=1}^{+\infty}\left|\frac{2^n+3^{-n}}{n^2}\right|$ 
+                \customfbox{Le forme indeterminate del tipo $f(n)^{g(n)}=\{0^0, \infty^0, 1^\infty\}$ si risolvono $f(n)^{g(n)}=e^{g(n)\ln\left(f(n)\right)}$}
+                \begin{enumerate}
+                    \item \textbf{Criterio della radice}: \begin{equation*}
+                        \begin{split}
+                            \lim_{n\rightarrow+\infty}\sqrt[n]{\left|\frac{2^n+3^{-n}}{n^2}\right|}&=\lim_{n\rightarrow+\infty}\left(\left|\frac{2^n}{n^2}\right|\right)^{\frac{1}{n}}=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\ln\left(\frac{2^n}{n^2}\right)}\\
+                            &=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\ln\left({2^n}\right)-\ln\left({n^2}\right)}=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}n\ln\left({2}\right)-2\ln\left({n}\right)}\\
+                            &=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\ln\left({2^n}\right)-\ln\left({n^2}\right)}=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}n\ln\left({2}\right)-2\ln\left({n}\right)}\\
+                            &=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\ln\left({2^n}\right)-\ln\left({n^2}\right)}=\lim_{n\rightarrow+\infty}e^{\ln\left({2}\right)-\frac{2\ln\left({n}\right)}{n}}=e^{\ln(2)}=2
+                        \end{split}
+                    \end{equation*}
+                    \item \textbf{Determiniamo $\rho$}: $\rho=\frac{1}{2}$ per definizione
+                    \item \textbf{Determinare $I$}: \begin{enumerate}
+                        \item si "creano" due serie diverse usando l'intervallo $\left[x_0-p,x_0+p\right]$ e sostituendo $x$ con entrambi gli estremi: \begin{equation*}
+                            \begin{split}
+                                &\sum_{n=1}^{+\infty}\frac{2^n+3^{-n}}{n^2}\left(x_0-p\right)^n\\
+                                &\sum_{n=1}^{+\infty}\frac{2^n+3^{-n}}{n^2}\left(x_0+p\right)^n
+                            \end{split}
+                        \end{equation*}
+                        \item \textbf{Studiamo la convergenza di entrambe}: \begin{equation*}
+                            \begin{split}
+                                &\frac{2^n+3^{-n}}{n^2}\left(0-\frac{1}{2}\right)^n=\frac{\left(2^n+3^{-n}\right)\left(-\frac{1}{2}\right)^n}{n^2}=\frac{(-1)^n+\left(-\frac{1}{6}\right)^n}{n^2}\\
+                                &\rightarrow\left|\frac{(-1)^n+\left(-\frac{1}{6}\right)^n}{n^2}\right|=\frac{1+\left(\frac{1}{6}\right)^n}{n^2}\\
+                                &=\frac{1}{n^2}+\frac{\left(\frac{1}{6}\right)^n}{n^2}=\begin{cases}
+                                    \frac{1}{n^2} & \text{serie armonica, converge}\\
+                                    \frac{\left(\frac{1}{6}\right)^n}{n^2}\rightarrow \frac{\frac{\left(\frac{1}{6}\right)^n}{n^2}}{\left(\frac{1}{6}\right)^n} & \scriptsize\text{per confronto asintoto } b_n \text{ converge perchè serie geometrica}\normalsize
+                                \end{cases}\\
+                                &\frac{2^n+3^{-n}}{n^2}\left(0+\frac{1}{2}\right)^n \rightarrow \text{analogamente a quella di sopra converge}
+                            \end{split}                            
+                        \end{equation*}
+                        \item Quindi, visto che converge per entrambi gli estremi $I=\left[-\frac{1}{2},\frac{1}{2}\right]$
+                    \end{enumerate}
+                \end{enumerate}
+            \end{enumerate}
         \end{enumerate}
 \section{Polinomio di McLaurin}
     Per calcolare il polinomio di McLaurin di ordine $k$:
@@ -147,120 +301,51 @@
         \includegraphics[width = \textwidth]{Images/seriedimaclaurin.png}
     \end{center}
     \subsection{Esercizio da esame}
-\section{Serie di Funzioni}
-    Data la serie di funzioni:
-    \begin{equation*}
-        f(x) = \sum_{n=1}^{\infty}f_n(x)
-    \end{equation*}
-    \begin{enumerate}
-        \item \textbf{Converge puntualmente} su $I$ se la serie converge $\forall x\in I$ e $f:I\rightarrow\mathbb{R}$
-        \item \textbf{Converge assolutamente} su $I$ se la serie a termini positivi $\left(\left|f_n(x)\right|\right)$ converge $\forall x\in I$
-    \end{enumerate}
-    \textit{Se per qualche $x\in I$ la serie diverge o è indeterminata, bisogna restringere il dominio della funzione somma $f(x)$ all'insieme:} \begin{equation*}
-        \left\{x\in I \mid \sum_{n=1}^{\infty}f_n(x) \text{ converge}\right\}
-    \end{equation*}
-    \subsection{Criterio di Weierstrass}
-        Data una serie di funzioni, se la serie numerica a termini positivi converge:
-        \begin{equation*}
-            \sum_{n=1}^{\infty}\sup_{x\in I}\left|f_n(x)\right|
-        \end{equation*}
-        allora la serie di funzioni converge assolutamente e puntualmente (= totalmente) su $I$.
-    \subsection{Corollari}
-        \subsubsection{Continuità della somma}
-            Se:
-            \begin{enumerate}
-                \item Le funzioni $f_n(x)$ sono continue su $I\forall n\geq 1$
-                \item La serie converge totalmente su $I$ ad $f(x)$  
-            \end{enumerate}
-            Allora $f(x)$ è continua su $I$.
-        \subsubsection{Integrazione temine a termine}
-            Data una serie di funzioni dove le funzioni $f_n(x)$ sono definite su $[a,b]$ se:
-            \begin{enumerate}
-                \item Le funzioni $f_n$ sono continue su $[a,b]\forall n\geq 1$
-                \item La serie converge totalmente su $[a,b]$ ad $f(x)$
-            \end{enumerate}
-            Allora $f(x)$ è integrabile in $[a,b]$:
-            \begin{equation*}
-                \int_{a}^{b}f(x)dx = \sum_{n=1}^{\infty}\int_{a}^{b}f_n(x)dx
-            \end{equation*}
-        \subsubsection{Derivazione termine a termine}
-            Data una serie di funzioni dove le funzioni $f_n(x)$ sono definite su $I$ se:
-            \begin{enumerate}
-                \item Le funzioni $f_n$ sono derivabili e le derivate sono funzioni continue $\forall n\geq 1$
-                \item La serie $\sum_{n=1}^{\infty}f_n(x)$ converge puntualmente su $I$
-                \item La serie $\sum_{n=1}^{\infty}f'_n(x)$ converge totalmente su $I$
-            \end{enumerate}
-            Allora $f(x)$ derivabile e:
-            \begin{equation*}
-                f'(x) = \sum_{n=1}^{\infty}f'_n(x) \quad \forall x\in I
-            \end{equation*}
-        \subsubsection{Corollario 1.34}
-            Data una serie di funzioni definite su $[a,b]$ se:
-            \begin{enumerate}
-                \item Le funzioni $f_n(x)$ sono continue su $[a,b]\forall n\geq 1$
-                \item La serie converge totalamente su $(a,b)$
-            \end{enumerate}
-            Allora la serie converge totalmente su su $[a,b]$ e la funzione somma è continua su $[a,b]$
-\section{Serie di potenze}
-    La serie di funzioni
-    \begin{equation*}
-        \sum_{n=0}^{\infty}a_n x^n
-    \end{equation*}            
-    si chiama \textbf{serie di potenze di centro 0}
-    \subsection{Raggio di convergenza}
-        Data una serie di potenze $\sum_{n=0}^{\infty}a_n x^n \, \exists p \in [0,+\infty)\cup\{+\infty\}$, detto raggio di convergenza, tale che:
         \begin{itemize}
-            \item se $p=0 \Rightarrow$ la serie di potenze converge solo in 0
-            \item se $0<p<+\infty \Rightarrow$ la serie converge assolutamente su $(-p,p)$, non converge puntualmente su $(-\infty,p)\cup(p,+\infty)$, converge totalmente su $[-R,R] \,\forall 0<R<p$
-            \item se $p=+\infty \Rightarrow$ la serie di potenze converge assolutamente su $\mathbb{R}$ e converge totalmente\\
-            su $[-R,R] \, \forall R>0$
+            \item \textit{Data la funzione $f(x)=x(e^x-1)+\ln(1+x^2)+\sin(2x)$, calcolarne il polinomio di McLaurin di ordine 4} \begin{enumerate}
+                \item Dividiamo $f(x)$ in polinomi che contengono le funzioni elementari quindi avremo: \begin{itemize}
+                    \item $x(e^x-1)=x\left(1+x+\frac{1}{2}x^2+\frac{1}{3!}x^3-1\right)=x^2+\frac{x^3}{2}+\frac{x^4}{3!}$
+                    \item $\ln(1+x^2)=\left(x^2-\frac{(x^2)^2}{2}\right)=x^2-\frac{x^4}{2}$
+                    \item $\sin(2x)=2\left(x-\frac{x^3}{3!}\right)=2x-\frac{(2x)^3}{3!}$
+                \end{itemize}
+                \item Costruiamo una tabella di questo tipo: 
+                \begin{center}
+                    \begin{tabular}{| c | c | c | c | c |}
+                        \hline
+                        \textbf{Ordine} & $x(e^x-1)$ & $\ln(1+x^2)$ & $\sin(2x)$ & \textbf{Somma}\\
+                        \hline
+                        1 & / & / & $2x$ & $2x$ \\
+                        \hline
+                        2 & $x^2$ & $x^2$ & / & $2x^2$\\
+                        \hline
+                        3 & $\frac{x^3}{2}$ & / & $-\frac{(2x)^3}{3!}$ & $-\frac{5x^3}{6}$\\
+                        \hline
+                        4 & $\frac{x^4}{3!}$ & $-\frac{x^4}{2}$ & / & $-\frac{x^4}{3}$\\
+                        \hline
+                    \end{tabular}
+                \end{center}
+                Dove andiamo a prendere gli elementi di ciascun polinomio dell'ordine indicato nella prima colonna ed eseguiamo la somma della riga nell'ultima colonna.
+                \item Poi costruiamo il polinomio $P_4(x)$ sommando l'ultima colonna: $P_4(x)=2x+2x^2-\frac{5x^3}{6}-\frac{x^4}{3}$
+            \end{enumerate}
+            \item \textit{Scrivere il resto di Lagrange $R_1(x)$ di ordine 1 (con centro in 0) della funzione $g(x)=\cos(x^2)+\sin(3x)$ e determinarne una stima per $x\in(0,\frac{1}{4}]$}
         \end{itemize}
-        Se la serie converge puntualmente in $y\in\mathbb{R}, y\neq 0 \Rightarrow$ la serie converge totalmente su $[-R,R]\, \forall 0<R<\left|y\right|$.
-        \subsubsection{Caso: Criteri del rapporto e della radice}
-            Se esiste $l$:
-            \begin{equation*}
-                p=\begin{cases}
-                    +\infty & l = 0\\
-                    \frac{1}{l} & l\in(0,+\infty)\\
-                    0  & l = +\infty
-                \end{cases}
-            \end{equation*}
-    \subsection{Insieme di convergenza puntuale $I=(-p,p)$}
-        \begin{enumerate}
-            \item Sostituire $x^n$ con gli estremi di $\left[x_0-p,x_0+p\right]$ e quindi "creare" due serie diverse e studiare la convergenza/divergenza
-            \item Se converge per entrambi allora converge su tutto l'intervallo, altrimenti devo mettere la parentesi tonda dove non converge
-        \end{enumerate}
-    \subsection{Proprietà}
-    \begin{itemize}
-        \item La funzione somma \begin{equation*}
-            f:I\rightarrow \mathbb{R} \qquad f(x)=\sum_{n=0}^{\infty}a_nx^n
-        \end{equation*}
-        è continua su $I$
-        \item La funzione $f$ ammette primitiva sull'intervallo $I$ data da:
+\section{Formula di Taylor}
+    \customfbox{$f^{(n)}$ indica l'ordine di derivazione $n$-esimo}
+    Data una funzione $f:I\rightarrow\mathbb{R}$ definita su un intervallo $I$ e derivabile infinite volte ($C^{\infty}$)
+    \subsection{Polinomio di Taylor di $f$ centrato in $x_0$ di ordine $n$}
         \begin{equation*}
-            \int f(x)dx = \int\left(\sum_{n=0}^{\infty}a_nx^n\right)dx=\sum_{n=0}^{\infty}a_n\frac{1}{n+1}x^{n+1}+c
+            \taylor{f}{x_0}{n}(x) = f(x_0)+f'(x_0)(x-x_0)+f''(x_0)\frac{(x-x_0)^2}{2!}+\ldots+f^{(n)}(x_0)\frac{(x-x_0)^n}{n!}
         \end{equation*}
-        dove la serie integrata ha raggio di convergenza $p$
-        \item La funzione $f$ è derivabile su $(-p,p)$ e vale \begin{equation*}
-            f'(x) = \left(\sum_{n=0}^{\infty}a_nx^n\right)'=\sum_{n=1}^{\infty}a_nnx^{n-1} \qquad x\in (-p,p)
-        \end{equation*}
-        dove la serie derivata ha raggio di convergenza $p$
-        \item Data una serie di potenze con  raggio di convergenza $p>0$ la funzione somma $f(x)$ è derivabile infinite volte in $(-p,p)\forall k\in\mathbb{N}k\geq 0$: \begin{equation*}
-            f^{(k)}(x)=\sum_{n=k}^{\infty}a_n\frac{n!}{(n-k)!}x^{n-k} \qquad x\in(-p,p)
-        \end{equation*}
-        In particolare: $f^{(n)}(0) = n!a_n \qquad n\in\mathbb{N}$
-        \item Abbiamo due serie di potenze di centro $x_0$ e raggi di convergenza $p_1>0$ e $p_2>0$, rispettivamente. Se esiste $0<\delta<\min\{p_1,p_2\}\mid\forall x\in(-\delta,\delta)$:
+    \subsection{Formula di Taylor con resto di Lagrange}
         \begin{equation*}
-            \sum_{n=0}^{\infty}a_nx^n = \sum_{n=0}^{\infty}b_nx^n 
+            \begin{split}
+                &f(x) = \taylor{f}{x_0}{n}(x) + R_nf(x)\\
+                &R_nf(x) = \frac{f^{(n+1)}(c_n)(x-x_0)^{n+1}}{(n+1)!} \text{ con } c_n\in\{x_0,x\}
+            \end{split}
         \end{equation*}
-        allora $a_n=b_n\forall n\in\mathbb{N}$
-        \item Sia $f: I\rightarrow\mathbb{R}$ con $I\subset\mathbb{R}$ tale che $f$ sia derivabile infinite volte in $I$.\\
-        Se esistono $M>0,L>0\mid\left|f^{(n)(x)}\right|\leq M\cdot L^n \,\forall n\in\mathbb{N},\forall x\in I$ allora, fissato $x_0\in I$:
+        Se $x=b$ e $x_0$ è vicino a $b$, $\taylor{f}{x_0}{n}(b)$ approssima $f(b)$ e $\left|f(b)-\taylor{f}{x_0}{n}(b)\right| = \left|R_nf(b)\right|$
+    \subsection{Formula di Taylor con resti di Peano}
         \begin{equation*}
-            \sum_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n
+                f(x)= \taylor{f}{x_0}{n}(x) + (x-x_0)^n + \varepsilon(x-x_0) \text{ con } \lim_{x\rightarrow x_0} \varepsilon(x-x_0) = 0
         \end{equation*}
-        si chiama serie di Taylor di $f$ con centro $x_0$ (se $x_0=0$ si chiama serie di Maclaurin). La funzione $f$ è sviluppabile in serie di Taylor con centro $x_0$ nell'intervallo $I$ se: \begin{equation*}
-            f(x) = \sum_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n \qquad \forall x\in I
-        \end{equation*}
-    \end{itemize}
 \end{document}
