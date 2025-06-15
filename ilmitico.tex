@@ -411,22 +411,124 @@
     \end{itemize}
 \section{Funzioni a due variabili}
     \subsection{Derivata parziale}
-    Deriviamo la funzione fissando una variabile e l'altra la trattiamo come costante:
-    \begin{equation*}
-        \begin{split}
-            &f(x,y)=x^2y+3xy^2 \\
-            &f_x(x,y)=\frac{\vartheta f}{\vartheta x}=2xy+3y^2\\
-            &f_y(x,y)=\frac{\vartheta f}{\vartheta y}=x^2+6x
-        \end{split}
-    \end{equation*}
+        Deriviamo la funzione fissando una variabile e l'altra la trattiamo come costante:
+        \begin{equation*}
+            \begin{split}
+                &f(x,y)=x^2y+3xy^2 \\
+                &f_x(x,y)=\frac{\vartheta f}{\vartheta x}=2xy+3y^2\\
+                &f_y(x,y)=\frac{\vartheta f}{\vartheta y}=x^2+6x
+            \end{split}
+        \end{equation*}
     \subsubsection{Di ordine superiore}
-    Equivalgono alle derivate di ordine superiore al primo, nel caso di derivata parziale mista prima deriviamo per la prima variabile e poi deriviamo il risultato fissando la seconda variabile
-    \begin{equation*}
-        \begin{split}
-            &f(x,y)=x^2y+3xy^2 \\
-            & f_{xx}(x,y)=\frac{\vartheta^2 f}{\vartheta x^2}=\frac{\vartheta}{\vartheta x}\left(\frac{\vartheta f}{\vartheta x}\right)=\frac{\vartheta}{\vartheta x}(2xy+3y^2)=2y\\
-            & f_{xy}(x,y)=\frac{\vartheta^2 f}{\vartheta x\vartheta y}=\frac{\vartheta}{\vartheta y}\left(\frac{\vartheta f}{\vartheta x}\right)=\frac{\vartheta}{\vartheta y}(2xy+3y^2)=2x\\
-        \end{split}
-    \end{equation*}
-    
+        Equivalgono alle derivate di ordine superiore al primo, nel caso di derivata parziale mista prima deriviamo per la prima variabile e poi deriviamo il risultato fissando la seconda variabile
+        \begin{equation*}
+            \begin{split}
+                &f(x,y)=x^2y+3xy^2 \\
+                & f_{xx}(x,y)=\frac{\vartheta^2 f}{\vartheta x^2}=\frac{\vartheta}{\vartheta x}\left(\frac{\vartheta f}{\vartheta x}\right)=\frac{\vartheta}{\vartheta x}(2xy+3y^2)=2y\\
+                & f_{xy}(x,y)=\frac{\vartheta^2 f}{\vartheta x\vartheta y}=\frac{\vartheta}{\vartheta y}\left(\frac{\vartheta f}{\vartheta x}\right)=\frac{\vartheta}{\vartheta y}(2xy+3y^2)=2x\\
+            \end{split}
+        \end{equation*}
+    \subsection{Gradiente}
+        \begin{equation*}
+            \bigtriangledown f(x_0,y_0) = \left(\frac{\vartheta f}{\vartheta x}(x_0,y_0),\frac{\vartheta f}{\vartheta y}(x_0,y_0)\right)
+        \end{equation*}
+    \subsection{Derivata direzionale}
+        Dato $u$ di modulo 1 $\left(\sqrt{u_x^2+u_y^2}=1\right)$
+        \begin{equation*}
+            D_uf(x_0,y_0)=\bigtriangledown f(x_0,y_0)\cdot u = \left(\frac{\vartheta f}{\vartheta x}(x_0,y_0)\cdot u_x\right) + \left(\frac{\vartheta f}{\vartheta y}(x_0,y_0)\cdot u_y\right)
+        \end{equation*}
+    \subsubsection{Normalizzazione vettore $v$}
+        \begin{equation*}
+            u=\frac{v}{\sqrt{v_x^2+v_y^2}}
+        \end{equation*}
+    \subsection{Equazione del piano tangente al grafico di $f$ in ($x_0,y_0,z_0$)}
+        \begin{equation*}
+            \begin{split}
+                z-z_0&=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)\\
+                z&=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)+z_0
+            \end{split}
+        \end{equation*}
+    \subsection{Punti critici di $f$}
+        Un punto $(x_0,y_0)$ nel dominio di $f$ è un punto critico se:
+        \begin{itemize}
+            \item $\bigtriangledown f(x_0,y_0)=(0,0)$ (Punti \textbf{stazionari}) \begin{enumerate}
+                \item Calcola $\bigtriangledown f(x,y)$
+                \item Trova i punti in cui il gradiente è nullo: \begin{equation*}
+                    \begin{cases}
+                        f_x(x,y)=0\\
+                        f_y(x,y)=0
+                    \end{cases}
+                \end{equation*}
+                \item Le coppie di $(x,y)$ che risolvono il sistema ma non appartengono al dominio non sono punti critici.
+            \end{enumerate}
+            \item oppure, una o entrambe le derivate parziali $f_x(x_0,y_0)$ e $f_y(x_0,y_0)$ non esistono
+        \end{itemize}
+        \subsubsection{Classificazione}
+            \begin{enumerate}
+                \item Calcolo le derivate parziali seconde: \begin{itemize}
+                    \item $f_{xx}(x,y)$
+                    \item $f_{yy}(x,y)$
+                    \item $f_{xy}(x,y)$
+                \end{itemize}
+                \item Costruisco la matrice Hessiana (\textit{non necessario}): \begin{equation*}
+                    H(x,y)=\begin{pmatrix}
+                        f_{xx} & f_{xy} \\
+                        f_{yx} & f_{yy}
+                    \end{pmatrix}
+                \end{equation*}
+                \item Calcolo il determinante: $D(x,y)=f_{xx}(x,y)\cdot f_{yy}(x,y)-\left(f_{xy}(x,y)\right)^2$
+                \item Per ogni punto critico $(x_0,y_0)$ calcolo $D(x_0,y_0)$ \begin{itemize}
+                    \item $D(x_0,y_0)>0$ \begin{itemize}
+                        \item $f_{xx}(x_0,y_0)>0$: Il punto è un minimo locale
+                        \item $f_{xx}(x_0,y_0)<0$: Il punto è un massimo locale
+                    \end{itemize}
+                    \item $D(x_0,y_0)<0$: punto di sella
+                    \item $D(x_0,y_0)=0$: test inconcludente
+                \end{itemize}
+            \end{enumerate}
+    \subsection{Esercizio da esame}
+    \textit{Sia $f(x,y)=\frac{3}{2}x^2-8x-4xy+4y^2+12\ln x$}
+    \begin{enumerate}
+        \item \textit{Determinare il dominio di $f$ e dire dove $f$ è differenziabile} \begin{enumerate}
+            \item Dom$f$: $(0,+\infty)$
+            \item $f_x(x,y)=3x-8-4y+\frac{12}{x}$ e $f_y(x,y)=-4x+8y$. Il dominio di queste derivate parziali è $(0,+\infty)$
+            \item Concludiamo dicendo che è differenziabile su tutto il dominio
+        \end{enumerate}
+        \item \textit{Calcolare il gradiente  nel punto $(1,0)$, la derivata direzionale $\frac{\vartheta f(1,0)}{\vartheta v}$ per $v=\left(-\frac{4}{5},\frac{3}{5}\right)$ e scrivere l'equazione del piano tangente al grafico di $f$ in $(1,0,f(1,0))$} \begin{enumerate}
+            \item $\bigtriangledown f(1,0)=(7,-4)$
+            \item $||v||=\sqrt{\frac{16}{25}+\frac{9}{25}}=1$
+            \item $D_vf(1,0)=\bigtriangledown f(1,0)\cdot v=(7,-4)\cdot(-\frac{4}{5},\frac{3}{5})=-\frac{28}{5}-\frac{12}{5}=-8$
+            \item \begin{equation*}
+                \begin{split}
+                    z&=f_x(1,0)(x-1)+f_y(1,0)(y-0)+z_0\\
+                    z&=f_x(1,0)(x-1)+f_y(1,0)(y-0)+f(1,0)\\
+                    z&=7(x-1)-4y-\frac{13}{2}\\
+                    z&=7x-7-4y-\frac{13}{2}\\
+                    z&=7x-4y-\frac{27}{2}
+                \end{split}
+            \end{equation*}
+        \end{enumerate}
+        \item \textit{Stabilire quali sono i punti critici di $f$ sul suo dominio e classificarli} \begin{enumerate}
+            \item \begin{equation*}
+                \begin{cases}
+                    3x-8-4y+\frac{12}{x}=0 \rightarrow x-8+\frac{12}{x}=0\rightarrow x^2-8x+12=0\rightarrow x_{1,2}=\frac{8\pm\sqrt{64-48}}{2}=\frac{8\pm 4}{2}=\begin{cases}
+                        x_1=6\\
+                        x_2=2
+                    \end{cases}\\
+                    -4x+8y=0 \rightarrow 8y=4x \rightarrow y=\frac{x}{2}
+                \end{cases}
+            \end{equation*}
+            I punti critici sono $(6,3)$ e $(2,1)$
+            \item Calcolo $f_{xx}, f_{yy} \text{ e } f_{xy}$ \begin{itemize}
+                \item $f_{xx}(x,y)=3-\frac{12}{x^2}$
+                \item $f_{yy}(x,y)=8$
+                \item $f_{xy}(x,y)=-4$
+            \end{itemize}
+            \item Calcolo $D(x,y)=\left(3-\frac{12}{x^2}\right)\cdot 8-16=24-\frac{96}{x^2}-16=8-\frac{96}{x^2}$
+            \item \begin{itemize}
+                \item $(2,1)\rightarrow D(2,1)=8-\frac{96}{4}=-16 \Rightarrow$ Punto di sella
+                \item $(6,3)\rightarrow D(6,3)=8-\frac{96}{36}=\frac{16}{3}, f_{xx}(6,3)=3-\frac{12}{36}=\frac{8}{3}\Rightarrow$ Minimo locale
+            \end{itemize}
+        \end{enumerate}
+    \end{enumerate}
 \end{document}
