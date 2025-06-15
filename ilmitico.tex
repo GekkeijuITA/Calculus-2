@@ -348,4 +348,85 @@
         \begin{equation*}
                 f(x)= \taylor{f}{x_0}{n}(x) + (x-x_0)^n + \varepsilon(x-x_0) \text{ con } \lim_{x\rightarrow x_0} \varepsilon(x-x_0) = 0
         \end{equation*}
+\section{Fourier}
+    \subsection{Coefficienti}
+        Data una funzione $f$ periodica di periodo $T$, i coefficienti di Fourier sono dati da:
+        \begin{equation*}
+            \hat{f_k}=\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(x)e^{-i\frac{2\pi}{T}kx} \qquad k\in\mathbb{Z}
+        \end{equation*}
+        E usando l'identità di Eulero:
+        \begin{equation*}
+            \hat{f_k}=\left(\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(x)\cos\left(\frac{2\pi}{T}kx\right)dx\right)-i\left(\frac{1}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(x)\sin\left(\frac{2\pi}{T}kx\right)dx\right)
+        \end{equation*}
+        \subsubsection{Coefficienti reali}
+        \begin{itemize}
+            \item $a_k=\hat{f_k}+\hat{f}_{-k}=\frac{2}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(x)\cos\left(\frac{2\pi}{T}kx\right)dx$
+            \item $b_k=i(\hat{f_k}+\hat{f}_{-k})=\frac{2}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(x)\sin\left(\frac{2\pi}{T}kx\right)dx$
+        \end{itemize}
+        \textbf{Proprietà:} \begin{itemize}
+            \item Se $f(x)$ è pari $\Rightarrow b_k$ nulli
+            \item Se $f(x)$ è dispari $\Rightarrow a_k$ nulli tranne $a_0=0$
+        \end{itemize}
+    \subsection{Calcolare il valore della serie di Fourier}
+        \begin{equation}
+            f(x)\sim \frac{a_0}{2}+\sum_{k=1}^{+\infty}\left[a_k\cos\left(\frac{2\pi k}{T}x\right)+b_k\sin\left(\frac{2\pi k}{T}x\right)\right]
+        \end{equation}
+    \subsection{Esercizio d'esame}
+    \textit{Sia $f$ la funzione ottenuta estendendo per periodicità a tutto $\mathbb{R}$ la funzione} \begin{equation*}
+        g(x)=\begin{cases}
+            2\pi + x & x\in[-\pi,0)\\
+            2\pi - x & x\in[0,\pi)\\
+        \end{cases}
+    \end{equation*}
+    \begin{itemize}
+        \item \textit{Disegna il grafico di $f$}
+        \item \textit{Calcolare il coefficiente di Fourier $\hat{f_0}$} \begin{enumerate}
+            \item Sappiamo che $\hat{f_0}=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)dx=\frac{1}{2\pi}\left[\int_{-\pi}^{0}(2\pi+x)dx+\int_{0}^{\pi}(2\pi-x)dx\right]=\frac{3\pi}{2}$
+        \end{enumerate}
+        \item \textit{Calcolare il coefficiente di Fourier $\hat{f_k}$ per $k\neq 0$} \begin{enumerate}
+            \item Se $f(x)$ è pari, i coefficienti $b_k$ sono nulli e i coefficienti $a_k=\frac{2}{2\pi}\int_{-\pi}^{\pi}f(x)\cos(\frac{2\pi}{2\pi}kx)dx=\frac{2}{\pi}\int_{0}^{\pi}f(x)\cos(kx)dx$
+            \item Poichè $\hat{f_k}=\frac{a_k-ib_k}{2}$ nel nostro caso sarà $\hat{f_k}=\frac{a_k}{2}$
+            \item Calcoliamo $a_k$ \begin{equation*}
+                a_k = \frac{2}{\pi}\int_{0}^{\pi}(2\pi-x)\cos(kx)dx=\frac{2}{\pi k^2}[1-(-1)^k]
+            \end{equation*}
+            \item Quindi dobbiamo calcolare per $k$ pari e $\neq 0$ e dispari: \begin{equation*}
+                \hat{f_k}=\begin{cases}
+                    \frac{2}{\pi k^2} & \text{se } k \text{ dispari}\\
+                    0 & \text{se } k \text{ pari e } \neq 0
+                \end{cases}
+            \end{equation*}
+        \end{enumerate}
+        \item \textit{Calcolare il valore della serie di Fourier di $f$ sull'intervallo $[-\pi,\pi)$} \begin{enumerate}
+            \item Sappiamo che $T=2\pi$
+            \item Calcoliamo $a_0$: \begin{equation*}
+                \begin{split}
+                    a_0 &= \frac{2}{T}\int_{-\frac{T}{2}}^{\frac{T}{2}}f(x)dx=\frac{2}{\pi}\int_{0}^{\pi}(2\pi-x)dx=\frac{2}{\pi}\left(\int_{0}^{\pi}2\pi dx-\int_{0}^{\pi}x dx\right)\\
+                    &=\frac{2}{\pi}\left(2\pi\left[x\right]_{0}^{\pi}-\left[\frac{x^2}{2}\right]_{0}^{\pi}\right)=\frac{2}{\pi}\left(2\pi^2-\frac{\pi^2}{2}\right)=\frac{2}{\pi}\frac{3\pi^2}{2}=3\pi
+                \end{split}
+            \end{equation*}
+            \item Sostituiamo $a_0, a_k \text{ e } b_k$ con quelli calcolati in precedenza \begin{equation*}
+                f(x)\sim \frac{3\pi}{2}+\sum_{k=1}^{+\infty}\left[\frac{2}{\pi k^2}[1-(-1)^k]\cos\left(kx\right)\right]                
+            \end{equation*}
+        \end{enumerate}
+    \end{itemize}
+\section{Funzioni a due variabili}
+    \subsection{Derivata parziale}
+    Deriviamo la funzione fissando una variabile e l'altra la trattiamo come costante:
+    \begin{equation*}
+        \begin{split}
+            &f(x,y)=x^2y+3xy^2 \\
+            &f_x(x,y)=\frac{\vartheta f}{\vartheta x}=2xy+3y^2\\
+            &f_y(x,y)=\frac{\vartheta f}{\vartheta y}=x^2+6x
+        \end{split}
+    \end{equation*}
+    \subsubsection{Di ordine superiore}
+    Equivalgono alle derivate di ordine superiore al primo, nel caso di derivata parziale mista prima deriviamo per la prima variabile e poi deriviamo il risultato fissando la seconda variabile
+    \begin{equation*}
+        \begin{split}
+            &f(x,y)=x^2y+3xy^2 \\
+            & f_{xx}(x,y)=\frac{\vartheta^2 f}{\vartheta x^2}=\frac{\vartheta}{\vartheta x}\left(\frac{\vartheta f}{\vartheta x}\right)=\frac{\vartheta}{\vartheta x}(2xy+3y^2)=2y\\
+            & f_{xy}(x,y)=\frac{\vartheta^2 f}{\vartheta x\vartheta y}=\frac{\vartheta}{\vartheta y}\left(\frac{\vartheta f}{\vartheta x}\right)=\frac{\vartheta}{\vartheta y}(2xy+3y^2)=2x\\
+        \end{split}
+    \end{equation*}
+    
 \end{document}
