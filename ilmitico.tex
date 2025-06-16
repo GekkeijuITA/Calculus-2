@@ -3,22 +3,27 @@
 \input{variables.tex}
 \preamble
 \begin{document}
-\section{Serie armonica}
-    \begin{equation*}
-        \sum_{n=1}^{\infty}\frac{1}{n^\alpha} = \begin{cases}
-            \text{converge} & \text{se }\alpha > 1\\
-            +\infty & \text{se }\alpha\leq 1
-        \end{cases}
-    \end{equation*}
-\section{Serie geometrica}
-    Dato $q\in\mathbb{R}$, la serie geometrica di ragione $q$ 
-    \begin{equation*}
-        \sum_{n=1}^{\infty}q^n = \begin{cases}
-            +\infty & \text{se } q\geq 1\\
-            \frac{q}{1-q} & \text{se } |q|< 1\\
-            \text{indeterminata} & \text{se }q\leq -1
-        \end{cases}
-    \end{equation*}
+\section{Serie Notevoli}
+    \begin{center}
+        \begin{tabular}{|c|p{6cm}|p{5cm}|}
+            \hline
+            \textbf{Tipo di Serie} & \textbf{Forma} & \textbf{Comportamento} \\
+            \hline
+            \textbf{Armonica Generalizzata} & $\displaystyle \sum_{n=1}^{\infty}\frac{1}{n^\alpha}$ & 
+                $\begin{cases}
+                    \text{Converge} & \text{se }\alpha > 1 \\
+                    +\infty & \text{se }\alpha \leq 1
+                \end{cases}$ \\
+            \hline
+            \textbf{Geometrica} & $\displaystyle \sum_{n=0}^{\infty}q^n$ (o $\sum_{n=1}^{\infty}q^n$) & 
+                $\begin{cases}
+                    \frac{1}{1-q} & \text{se } |q|< 1 \\
+                    +\infty & \text{se } q \geq 1 \\
+                    \text{Indeterminata} & \text{se } q \leq -1
+                \end{cases}$ \\
+            \hline
+        \end{tabular}
+    \end{center}
 \section{Serie di Funzioni}
     Data la serie di funzioni:
     \begin{equation*}
@@ -37,11 +42,17 @@
             \sum_{n=1}^{\infty}\sup_{x\in I}\left|f_n(x)\right|
         \end{equation*}
         allora la serie di funzioni converge assolutamente e puntualmente (= totalmente) su $I$.
-    \subsection{Flusso di lavoro:}
-    \begin{enumerate}
-        \item \textbf{Criterio di Weierstrass} per la convergenza totale
-        \item \textbf{Controllo la convergenza puntuale} se Weierstrass ha fallito
-    \end{enumerate}
+    \subsection{Strategia di Studio della Convergenza}
+        \begin{enumerate}
+            \item \textbf{Convergenza Puntuale:} Determinare l'insieme $I_p$ per cui $\forall x \in I_p$, la serie numerica $\sum f_n(x)$ converge. (Spesso con Criteri per serie numeriche).
+            \item \textbf{Convergenza Assoluta:} Su $I_p$, studiare $\sum |f_n(x)|$.
+            \item \textbf{Convergenza Uniforme/Totale:}
+            \begin{itemize}
+                \item Tentare il \textbf{Criterio di Weierstrass}: se $\sum \sup_{x \in I} |f_n(x)|$ converge, allora la serie converge totalmente su $I$.
+                \item Se Weierstrass non funziona su $I_p$ (es. perché $\sup|f_n(x)|$ diverge, ma la serie converge comunque), cercare intervalli $J \subset I_p$ dove $\sup|f_n(x)|$ è finito e applicare Weierstrass.
+                \item (Meno comune per gli esami, ma utile: altri criteri come quello di Abel-Dirichlet per convergenza uniforme.)
+            \end{itemize}
+        \end{enumerate}
     \customfbox{Convergenza totale $\Rightarrow$ convergenza puntuale}
     \subsection{Corollari}
         \subsubsection{Continuità della somma}
@@ -85,160 +96,171 @@
         \sum_{n=0}^{\infty}a_n x^n
     \end{equation*}            
     si chiama \textbf{serie di potenze di centro 0}
-    \subsection{Raggio di convergenza}
-        Data una serie di potenze $\sum_{n=0}^{\infty}a_n x^n \, \exists p \in [0,+\infty)\cup\{+\infty\}$, detto raggio di convergenza, tale che:
+    \subsection{Raggio di Convergenza $R$}
+        Sia $\sum_{n=0}^{\infty}a_n x^n$ una serie di potenze di centro 0. Esiste un unico $R \in [0,+\infty) \cup \{+\infty\}$, detto Raggio di Convergenza, tale che:
         \begin{itemize}
-            \item se $p=0 \Rightarrow$ la serie di potenze converge solo in 0
-            \item se $0<p<+\infty \Rightarrow$ la serie converge assolutamente su $(-p,p)$, non converge puntualmente su $(-\infty,p)\cup(p,+\infty)$, converge totalmente su $[-R,R] \,\forall 0<R<p$
-            \item se $p=+\infty \Rightarrow$ la serie di potenze converge assolutamente su $\mathbb{R}$ e converge totalmente\\
-            su $[-R,R] \, \forall R>0$
+            \item Se $R=0$: la serie converge \textbf{solo in $x=0$}.
+            \item Se $0<R<+\infty$:
+            \begin{itemize}
+                \item Converge \textbf{assolutamente} su $(-R, R)$.
+                \item Converge \textbf{totalmente} su $[-K,K]$ per ogni $0 < K < R$.
+                \item Non converge per $|x|>R$.
+            \end{itemize}
+            \item Se $R=+\infty$: la serie converge \textbf{assolutamente} su $\mathbb{R}$ e \textbf{totalmente} su $[-K,K]$ per ogni $K > 0$.
         \end{itemize}
-        Se la serie converge puntualmente in $y\in\mathbb{R}, y\neq 0 \Rightarrow$ la serie converge totalmente su $[-R,R]\, \forall 0<R<\left|y\right|$.
-        \subsubsection{Caso: Criteri del rapporto e della radice}
-            Se esiste $l$:
-            \begin{equation*}
-                p=\begin{cases}
-                    +\infty & l = 0\\
-                    \frac{1}{l} & l\in(0,+\infty)\\
-                    0  & l = +\infty
-                \end{cases}
-            \end{equation*}
-    \subsection{Insieme di convergenza puntuale $I=(-p,p)$}
+        \textbf{Nota:} La convergenza agli estremi $x = \pm R$ deve essere studiata separatamente (convergenza puntuale).
+    \subsubsection{Calcolo di $R$ (Criteri del Rapporto/Radice)}
+        Sia $l = \lim_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right|$ o $l = \lim_{n\to\infty} \sqrt[n]{|a_n|}$.
+        Allora il raggio di convergenza $R$ è dato da:
+        \begin{equation*}
+            R=\begin{cases}
+                +\infty & \text{se } l = 0\\
+                \frac{1}{l} & \text{se } l \in (0,+\infty)\\
+                0 & \text{se } l = +\infty
+            \end{cases}
+        \end{equation*}
+    \subsection{Insieme di Convergenza Puntuale $I_c$}
+        L'insieme di convergenza puntuale si ottiene studiando la convergenza della serie negli estremi dell'intervallo $(-R, R)$.
         \begin{enumerate}
-            \item Sostituire $x^n$ con gli estremi di $\left[x_0-p,x_0+p\right]$ e quindi "creare" due serie diverse e studiare la convergenza/divergenza
-            \item Se converge per entrambi allora converge su tutto l'intervallo, altrimenti devo mettere la parentesi tonda dove non converge
+            \item Sostituire $x = R$ nella serie e studiare la convergenza della serie numerica $\sum a_n R^n$.
+            \item Sostituire $x = -R$ nella serie e studiare la convergenza della serie numerica $\sum a_n (-R)^n$.
+            \item L'insieme $I_c$ sarà $(-R,R)$, $[-R,R)$, $(-R,R]$ o $[-R,R]$ a seconda della convergenza agli estremi.
         \end{enumerate}
-    \iffalse
-    \subsection{Proprietà}
-    \begin{itemize}
-        \item La funzione somma \begin{equation*}
-            f:I\rightarrow \mathbb{R} \qquad f(x)=\sum_{n=0}^{\infty}a_nx^n
-        \end{equation*}
-        è continua su $I$
-        \item La funzione $f$ ammette primitiva sull'intervallo $I$ data da:
+    \subsection{Proprietà della Funzione Somma $f(x) = \sum_{n=0}^{\infty}a_n x^n$}
+        Sia $f(x) = \sum_{n=0}^{\infty}a_n x^n$ una serie di potenze con raggio di convergenza $R > 0$.
+        \begin{itemize}
+            \item \textbf{Continuità:} La funzione somma $f(x)$ è continua sull'intervallo aperto $(-R, R)$.
+            \item \textbf{Derivabilità Termine a Termine:} $f(x)$ è derivabile infinite volte su $(-R, R)$, e la sua derivata $k$-esima si ottiene derivando la serie termine a termine:
+            \begin{equation*}
+                f^{(k)}(x) = \sum_{n=k}^{\infty}a_n \frac{n!}{(n-k)!}x^{n-k} \quad \forall x \in (-R,R)
+            \end{equation*}
+            Il raggio di convergenza delle serie derivate è ancora $R$.
+            \item \textbf{Integrazione Termine a Termine:} $f(x)$ è integrabile su ogni intervallo compatto contenuto in $(-R, R)$, e la sua primitiva si ottiene integrando la serie termine a termine:
+            \begin{equation*}
+                \int f(x)dx = \sum_{n=0}^{\infty}a_n\frac{x^{n+1}}{n+1} + C
+            \end{equation*}
+            Il raggio di convergenza della serie integrata è ancora $R$.
+            \item \textbf{Coefficienti di Maclaurin:} I coefficienti $a_n$ della serie di potenze sono legati alle derivate della funzione somma $f(x)$ nel centro ($x=0$) dalla relazione fondamentale:
+            $$a_n = \frac{f^{(n)}(0)}{n!} \quad \text{o equivalentemente } f^{(n)}(0) = n!a_n$$
+            Questo significa che la serie di potenze è lo sviluppo di Maclaurin della sua funzione somma.
+            \item \textbf{Unicità dello Sviluppo:} Se due serie di potenze di centro 0 convergono alla stessa funzione su un intervallo $(-\delta, \delta)$ con $\delta > 0$, allora i loro coefficienti devono essere identici: $a_n = b_n$ per ogni $n$.
+        \end{itemize}
+\section{Convergenza e Divergenza delle Serie Numeriche}
+    \subsection{Convergenza Assoluta e Semplice}
         \begin{equation*}
-            \int f(x)dx = \int\left(\sum_{n=0}^{\infty}a_nx^n\right)dx=\sum_{n=0}^{\infty}a_n\frac{1}{n+1}x^{n+1}+c
+            \sum_{n=1}^{\infty}a_n \text{ converge assolutamente se } \sum_{n=1}^{\infty}\left|a_n\right| \text{ converge.}
         \end{equation*}
-        dove la serie integrata ha raggio di convergenza $p$
-        \item La funzione $f$ è derivabile su $(-p,p)$ e vale \begin{equation*}
-            f'(x) = \left(\sum_{n=0}^{\infty}a_nx^n\right)'=\sum_{n=1}^{\infty}a_nnx^{n-1} \qquad x\in (-p,p)
-        \end{equation*}
-        dove la serie derivata ha raggio di convergenza $p$
-        \item Data una serie di potenze con  raggio di convergenza $p>0$ la funzione somma $f(x)$ è derivabile infinite volte in $(-p,p)\forall k\in\mathbb{N}k\geq 0$: \begin{equation*}
-            f^{(k)}(x)=\sum_{n=k}^{\infty}a_n\frac{n!}{(n-k)!}x^{n-k} \qquad x\in(-p,p)
-        \end{equation*}
-        In particolare: $f^{(n)}(0) = n!a_n \qquad n\in\mathbb{N}$
-        \item Abbiamo due serie di potenze di centro $x_0$ e raggi di convergenza $p_1>0$ e $p_2>0$, rispettivamente. Se esiste $0<\delta<\min\{p_1,p_2\}\mid\forall x\in(-\delta,\delta)$:
-        \begin{equation*}
-            \sum_{n=0}^{\infty}a_nx^n = \sum_{n=0}^{\infty}b_nx^n 
-        \end{equation*}
-        allora $a_n=b_n\forall n\in\mathbb{N}$
-        \item Sia $f: I\rightarrow\mathbb{R}$ con $I\subset\mathbb{R}$ tale che $f$ sia derivabile infinite volte in $I$.\\
-        Se esistono $M>0,L>0\mid\left|f^{(n)(x)}\right|\leq M\cdot L^n \,\forall n\in\mathbb{N},\forall x\in I$ allora, fissato $x_0\in I$:
-        \begin{equation*}
-            \sum_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n
-        \end{equation*}
-        si chiama serie di Taylor di $f$ con centro $x_0$ (se $x_0=0$ si chiama serie di Maclaurin). La funzione $f$ è sviluppabile in serie di Taylor con centro $x_0$ nell'intervallo $I$ se: \begin{equation*}
-            f(x) = \sum_{n=0}^{\infty}\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n \qquad \forall x\in I
-        \end{equation*}
-    \end{itemize}
-    \fi
-\section{Convergenza/Divergenza}
-    %\subsection{Test dell'integrale}
-    %        Sia $ f: [1, +\infty) \to \mathbb{R} $ una funzione:
-    %        \begin{itemize}
-    %            \item positiva
-    %            \item decrescente
-    %        \end{itemize}
-    %        Posto $a_n = f(n)$ per ogni $n \geq 1$, allora:
-    %        \begin{equation*}
-    %            \sum_{n=1}^{\infty} a_n \text{ converge } \iff \int_{1}^{+\infty} f(x)dx \text{ converge}
-    %        \end{equation*}
-    %        Inoltre, valgono le disuguaglianze:
-    %        \begin{equation*}
-    %            \int_{1}^{+\infty} f(x)dx \leq \sum_{n=1}^{\infty} a_n \leq a_1 + \int_{1}^{+\infty} f(x)dx
-    %        \end{equation*}
-    \subsection{Convergenza assoluta}
-        \begin{equation*}
-            \sum_{n=1}^{\infty}a_n \text{ converge assolutamente se } \sum_{n=1}^{\infty}\left|a_n\right| \text{ converge}
-        \end{equation*}
-        Se la serie converge assolutamente $\Rightarrow$ converge semplicemente.
-    \subsection{Condizione necessaria di Cauchy per le serie}
-        Data una serie qualsiasi $\sum_{n=1}^{\infty}a_n$
+        \textbf{Teorema:} Se una serie converge assolutamente $\implies$ converge semplicemente.
+    \subsection{Condizione Necessaria di Cauchy per le Serie}
+        Data una serie qualsiasi $\sum_{n=1}^{\infty}a_n$:
         \begin{equation*}
             \lim_{n\rightarrow+\infty}a_n = \begin{cases}
-                0 & \Rightarrow \text{la serie \textbf{può} convergere o divergere} \\
+                0 & \Rightarrow \text{la serie \textbf{può} convergere o divergere (caso dubbio)} \\
                 \neq 0 \text{ o non esiste} & \Rightarrow \text{la serie \textbf{diverge} sicuramente}
             \end{cases}
         \end{equation*}
-        \textbf{Nota: } Questa condizione è \textbf{necessaria ma non sufficiente} alla convergenza della serie.
-    \subsection{Criteri di convergenza/divergenza}
-        \textit{Per serie a termini definitivamente positivi} ($\exists n | a_n\geq 0 \text{ con }n\in[n,+\infty)$)
+        \textbf{Nota:} Questa condizione è \textbf{necessaria ma non sufficiente} alla convergenza della serie.
+    
+    \newpage
+    \subsection{Criteri di Convergenza/Divergenza per Serie a Termini Definitivamente Positivi}
+        (\textit{Ovvero $\exists n_0$ tale che $a_n \geq 0$ per ogni $n \geq n_0$})
         \begin{itemize}
-            \item \textbf{Criterio del rapporto} (Utile con i fattoriali $n!$): \begin{equation*}
-                \lim_{n\rightarrow +\infty}\frac{a_{n+1}}{a_n} = l \in [0,+\infty)\cup\{+\infty\}
-            \end{equation*} \begin{enumerate}
-                \item $l<1\Rightarrow$ la serie converge assolutamente
-                \item $l>1\Rightarrow$ la serie diverge
+            \item \textbf{Criterio del Rapporto} (Utile con fattoriali $n!$ o potenze con $n$ all'esponente):
+            Sia $l = \lim_{n\rightarrow +\infty}\frac{a_{n+1}}{a_n}$.
+            \begin{enumerate}
+                \item Se $l<1 \Rightarrow$ la serie converge.
+                \item Se $l>1 \Rightarrow$ la serie diverge.
+                \item Se $l=1 \Rightarrow$ il criterio non fornisce informazioni (la serie può convergere o divergere).
             \end{enumerate}
-            \item \textbf{Criterio della radice} (Utile con potenze $n$-esime): \begin{equation*}
-                \lim_{n\rightarrow+\infty}\sqrt[n]{a_n} = l \in [0,+\infty)\cup\{+\infty\}
-            \end{equation*} \begin{enumerate}
-                \item $l<1\Rightarrow$ la serie converge assolutamente
-                \item $l>1\Rightarrow$ la serie diverge
+
+            \item \textbf{Criterio della Radice} (Utile con potenze $n$-esime come $(f(n))^n$):
+            Sia $l = \lim_{n\rightarrow+\infty}\sqrt[n]{a_n}$.
+            \begin{enumerate}
+                \item Se $l<1 \Rightarrow$ la serie converge.
+                \item Se $l>1 \Rightarrow$ la serie diverge.
+                \item Se $l=1 \Rightarrow$ il criterio non fornisce informazioni.
             \end{enumerate}
-            %\item \textbf{Criterio del confronto}: supponiamo che $0\leq a_n\leq b_n$ allora \begin{equation*}
-            %    \begin{split}
-            %        &\sum b_n \text{ converge} \Rightarrow \sum a_n \text{ converge}\\
-            %        &\sum a_n \text{ diverge} \Rightarrow \sum b_n \text{ diverge}
-            %    \end{split}
-            %\end{equation*}
-            \item \textbf{Criterio del confronto asintotico}:
+
+            \item \textbf{Criterio del Confronto}: Supponiamo che $0 \leq a_n \leq b_n$ definitivamente.
+            \begin{itemize}
+                \item Se $\sum b_n$ converge $\Rightarrow$ $\sum a_n$ converge.
+                \item Se $\sum a_n$ diverge $\Rightarrow$ $\sum b_n$ diverge.
+            \end{itemize}
+
+            \item \textbf{Criterio del Confronto Asintotico}:
+            Siano $a_n, b_n > 0$ definitivamente. Sia $L = \lim_{n\rightarrow +\infty}\frac{a_n}{b_n}$.
             \begin{equation*}
-                \lim_{n\rightarrow +\infty}\frac{a_n}{b_n} = L \begin{cases}
-                    \in (0,+\infty) & a_n \text{ e } b_n \text{ hanno lo stesso comportamento}\\
-                    0 & \text{se } b_n \text{ converge} \Rightarrow a_n \text{ converge, altrimenti non si può concludere}\\
-                    +\infty & \text{se } b_n \text{ diverge} \Rightarrow a_n \text{ diverge, altrimenti non si può concludere}\\
+                \begin{cases}
+                    L \in (0,+\infty) & \Rightarrow \sum a_n \text{ e } \sum b_n \text{ hanno lo stesso comportamento (convergenza/divergenza)} \\
+                    L = 0 & \Rightarrow \text{Se } \sum b_n \text{ converge} \Rightarrow \sum a_n \text{ converge (se } \sum b_n \text{ diverge, nulla si può dire)} \\
+                    L = +\infty & \Rightarrow \text{Se } \sum b_n \text{ diverge} \Rightarrow \sum a_n \text{ diverge (se } \sum b_n \text{ converge, nulla si può dire)}
                 \end{cases}
             \end{equation*}
-            Per scegliere $b_n$ prendi le $n$ di ordine maggiore in $a_n=\frac{\text{num}}{\text{den}}$ (\textit{es.} $a_n=\frac{n+1}{n^2+3}, b_n=\frac{n}{n^2}=\frac{1}{n}$)
-            \item \textbf{Criterio di Dirichlet}: sia $\sum_{n=1}^{\infty}a_nb_n$ \begin{enumerate}
-                \item $\exists M>0\mid \left|\sum_{n=1}^{N}a_n\right|\leq M\,\forall N\geq 1$
-                \item $b_n$ crescente/decrescente
-                \item $\lim_{n\rightarrow+\infty}b_n=0$
-            \end{enumerate}
-            \item \textbf{Criterio di Leibnitz}: sia $\sum_{n=1}^{\infty}(-1)^{n+1}a_n = a_1-a_2+a_3-\ldots$ una serie tale che
-                \begin{enumerate}
-                    \item $\exists n_0\mid a_n\geq 0\,\forall n\geq n_0$
-                    \item $\lim_{n\rightarrow+\infty}a_n=0$
-                    \item $a_{n+1}\geq a_n \forall n\geq 1$ (aka decrescente)
-                \end{enumerate}
-                allora converge \textbf{semplicemente} e la somma $s$ della serie soddisfa $\left|s-s_n\right|\leq a_{n+1}\forall n\geq 1$.
-            \item \textbf{Stima dell'errore}: $\left|\text{Somma} - \text{Somma parziale}\right|\leq b_{N+1}$
+            \textit{Suggerimento per scegliere $b_n$}: Prendi i termini di grado maggiore in numeratore e denominatore di $a_n$. (Es. $a_n=\frac{n+1}{n^2+3} \Rightarrow b_n=\frac{n}{n^2}=\frac{1}{n}$)
+
+            \item \textbf{Test dell'Integrale}:
+            Sia $f: [1, +\infty) \to \mathbb{R}$ una funzione positiva e decrescente.
+            Posto $a_n = f(n)$ per ogni $n \geq 1$, allora:
+            \begin{equation*}
+                \sum_{n=1}^{\infty} a_n \text{ converge } \iff \int_{1}^{+\infty} f(x)dx \text{ converge}
+            \end{equation*}
+            Inoltre, valgono le disuguaglianze per la somma $S$ della serie e l'integrale improprio $I$:
+            \begin{equation*}
+                \int_{1}^{+\infty} f(x)dx \leq S \leq a_1 + \int_{1}^{+\infty} f(x)dx
+            \end{equation*}
         \end{itemize}
-        \begin{center}
-            \includegraphics[width=.8\textwidth]{Images/convergenzaflowchart.png}
-        \end{center}
+
+    \subsection{Criteri di Convergenza per Serie a Termini di Segno Alterno}
+        \begin{itemize}
+            \item \textbf{Criterio di Leibniz} (per serie del tipo $\sum_{n=1}^{\infty}(-1)^n a_n$ o $\sum_{n=1}^{\infty}(-1)^{n+1} a_n$):
+            Se la successione $a_n$ soddisfa le seguenti condizioni:
+            \begin{enumerate}
+                \item $\lim_{n\rightarrow+\infty}a_n=0$
+                \item $a_n$ è decrescente definitivamente ($a_{n+1} \leq a_n$ per $n \geq n_0$)
+            \end{enumerate}
+            allora la serie converge \textbf{semplicemente}.
+
+            \item \textbf{Stima dell'Errore per Serie di Leibniz}:
+            Se una serie converge per il criterio di Leibniz a una somma $S$, e $S_N$ è la somma parziale fino all'N-esimo termine, allora l'errore commesso è limitato dal primo termine tralasciato:
+            $\left|S - S_N\right| \leq a_{N+1}$.
+
+            \item \textbf{Criterio di Dirichlet (per serie numeriche)}:
+            Consideriamo una serie $\sum_{n=1}^{\infty}a_nb_n$. Se valgono le seguenti condizioni:
+            \begin{enumerate}
+                \item Le somme parziali di $\sum a_n$ sono limitate: $\exists M>0 \mid \left|\sum_{k=1}^{N}a_k\right|\leq M \quad \forall N\geq 1$.
+                \item La successione $b_n$ è monotona (crescente o decrescente) definitivamente.
+                \item $\lim_{n\rightarrow+\infty}b_n=0$.
+            \end{enumerate}
+            Allora la serie $\sum_{n=1}^{\infty}a_nb_n$ converge.
+            \textit{(Questo criterio è più generale di Leibniz, che è un caso particolare di Dirichlet con $a_n = (-1)^n$ o $(-1)^{n+1}$)}.
+        \end{itemize}
+
+    \begin{center}
+        \includegraphics[width=.8\textwidth]{Images/convergenzaflowchart.png}
+    \end{center}
+
     \newpage
     \subsection{Esercizio d'esame}
         \textit{Stabilire se le seguenti serie sono a termini positivi e convergono semplicemente e/o assolutamente.}
         \begin{enumerate}
-            \item $\sum_{n=1}^{+\infty}(-1)^{n+1}\sin\left(\frac{1001}{\sqrt{n}}\right)$ \begin{enumerate}
+            \item $\sum_{n=1}^{+\infty}(-1)^{n+1}\sin\left(\frac{1001}{\sqrt{n}}\right)$ 
+            \begin{enumerate}
                 \item \textbf{Cauchy}: $\lim_{n\rightarrow+\infty}\sin\left(\frac{1001}{\sqrt{n}}\right)=\sin\left(\frac{1001}{\infty}\right)=\sin(0)=0$
-                \item \textbf{Convergenza assoluta}: $\sum_{n=1}^{+\infty}\left|(-1)^{n+1}\sin\left(\frac{1001}{\sqrt{n}}\right)\right|=\sum_{n=1}^{+\infty}\sin\left(\frac{1001}{\sqrt{n}}\right)$ \begin{enumerate}
-                    \item \textbf{Criterio di confronto asintotico}: \scriptsize$a_n = \sin\left(\frac{1001}{\sqrt{n}}\right), b_n = \frac{1001}{\sqrt{n}} \rightarrow \lim_{n\rightarrow+\infty}\frac{a_n}{b_n}=\lim_{n\rightarrow+\infty}\frac{\sin\left(\frac{1001}{\sqrt{n}}\right)}{\frac{1001}{\sqrt{n}}}=1$\normalsize \\ $\rightarrow$ $a_n$ e $b_n$ hanno lo stesso comportamento.
-                    \item \textbf{Serie armonica generalizzata}: $\frac{1001}{\sqrt{n}}\rightarrow\alpha=\frac{1}{2}\Rightarrow$ diverge
-                    \item Grazie al punto precedente possiamo dire che la serie originale non converge assolutamente (perchè è una serie a segno alternato), ora procederemo con Leibnitz
-                \end{enumerate}
-                \item \textbf{Criterio di Leibnitz}: \begin{enumerate}
-                    \item $\exists n_0\mid \sin\left(\frac{1001}{\sqrt{n}}\right)\geq 0\,\forall n\geq n_0?$ Si: $0<\frac{1001}{\sqrt{n}}\leq\pi\rightarrow n\geq\left(\frac{1001}{\pi}\right)^2\rightarrow n_0\simeq 101518.7$
-                    \item $\lim_{n\rightarrow+\infty}\sin\left(\frac{1001}{\sqrt{n}}\right)=0?$ L'abbiamo già fatto nel punto (a)
-                    \item Decrescente? \begin{enumerate}
+                \item \textbf{Convergenza assoluta}: $\sum_{n=1}^{+\infty}\left|(-1)^{n+1}\sin\left(\frac{1001}{\sqrt{n}}\right)\right|=\sum_{n=1}^{+\infty}\sin\left(\frac{1001}{\sqrt{n}}\right)$ 
+                    \begin{enumerate}
+                        \item \textbf{Criterio di confronto asintotico}: \scriptsize$a_n = \sin\left(\frac{1001}{\sqrt{n}}\right), b_n = \frac{1001}{\sqrt{n}} \rightarrow \lim_{n\rightarrow+\infty}\frac{a_n}{b_n}=\lim_{n\rightarrow+\infty}\frac{\sin\left(\frac{1001}{\sqrt{n}}\right)}{\frac{1001}{\sqrt{n}}}=1$\normalsize \\ $\rightarrow$ $a_n$ e $b_n$ hanno lo stesso comportamento.
+                        \item \textbf{Serie armonica generalizzata}: $\frac{1001}{\sqrt{n}}\rightarrow\alpha=\frac{1}{2}\Rightarrow$ diverge
+                        \item Grazie al punto precedente possiamo dire che la serie originale non converge assolutamente (perchè è una serie a segno alternato), ora procederemo con Leibnitz
+                    \end{enumerate}
+                \item \textbf{Criterio di Leibnitz}: 
+                    \begin{enumerate}
+                        \item $\lim_{n\rightarrow+\infty}\sin\left(\frac{1001}{\sqrt{n}}\right)=0?$ L'abbiamo già fatto nel punto (a)
+                        \item Decrescente? \begin{enumerate}
                         \item $a_n'=\cos\left(\frac{1001}{\sqrt{n}}\right)\cdot\left(-\frac{1001}{2\sqrt{n}}\cdot\frac{1}{n}\right)=\cos\left(\frac{1001}{\sqrt{n}}\right)\cdot\left(-\frac{1001}{2n^{\frac{1}{2}}n}\right)=\cos\left(\frac{1001}{\sqrt{n}}\right)\cdot\left(-\frac{1001}{2n^{\frac{3}{2}}}\right)$
                         \item $a'_n>0\begin{cases}
-                            \cos\left(\frac{1001}{\sqrt{n}}\right)>0\rightarrow -\frac{\pi}{2}\leq\frac{1001}{\sqrt{n}}\leq\frac{\pi}{2}\rightarrow n \geq 406269\\
-                            \left(-\frac{1001}{2n^{\frac{3}{2}}}\right)>0\rightarrow \text{Impossibile sarà sempre negativo perchè } n\geq 1
-                        \end{cases}$
+                                \cos\left(\frac{1001}{\sqrt{n}}\right)>0\rightarrow -\frac{\pi}{2}\leq\frac{1001}{\sqrt{n}}\leq\frac{\pi}{2}\rightarrow n \geq 406269\\
+                                \left(-\frac{1001}{2n^{\frac{3}{2}}}\right)>0\rightarrow \text{Impossibile sarà sempre negativo perchè } n\geq 1
+                            \end{cases}$
                         \item Quindi sapendo che la serie è decrescente con $n\geq 406269$, possiamo dire che anche questo requisito è soddisfatto
                     \end{enumerate}
                 \end{enumerate}
@@ -247,7 +269,8 @@
             \item $\sum_{n=1}^{+\infty}\frac{n(3-(\cos n)^2)}{n^3+2n+1}$ \begin{enumerate}
                 \item \textbf{Cauchy}: $\lim_{n\rightarrow+\infty}\frac{n(3-(\cos n)^2)}{n^3+2n+1}=0$
                 \item \textbf{Convergenza assoluta}: $\sum_{n=1}^{+\infty}\left|\frac{n(3-(\cos n)^2)}{n^3+2n+1}\right|$ \begin{enumerate}
-                    \item \textbf{Criterio di confronto asintotico:} $a_n=\frac{n(3-(\cos n)^2)}{n^3+2n+1}, b_n=\frac{1}{n^2}$ \begin{equation*}
+                    \item \textbf{Criterio di confronto asintotico:} $a_n=\frac{n(3-(\cos n)^2)}{n^3+2n+1}, b_n=\frac{1}{n^2}$
+                    \begin{equation*}
                             \lim_{n\rightarrow+\infty}\frac{a_n}{b_n}=\lim_{n\rightarrow+\infty}\frac{\frac{n(3-(\cos n)^2)}{n^3+2n+1}}{\frac{1}{n^2}}=\lim_{n\rightarrow+\infty}\frac{n^3\left(3-(\cos n)^2\right)}{n^3+2n+1} = \lim_{n\rightarrow+\infty}\frac{\left(3-(\cos n)^2\right)}{1+\frac{2}{n^2}+\frac{1}{n^3}}=3
                     \end{equation*}
                     \item \textbf{Serie armonica generalizzata}: $\frac{1}{n^2}\rightarrow  \alpha=2\Rightarrow b_n$ converge
@@ -256,19 +279,18 @@
             \end{enumerate}
             \item \textit{Data la serie di potenze} $\sum_{n=1}^{+\infty}\frac{2^n+3^{-n}}{n^2}x^n$ \textit{determinare il raggio di convergenza $\rho$ e l'insieme di convergenza puntuale I}. \begin{enumerate}
                 \item \textbf{Cauchy}: $\lim_{n\rightarrow+\infty}\frac{2^n+3^{-n}}{n^2}=0$
-                \item \textbf{Convergenza assoluta}: $\sum_{n=1}^{+\infty}\left|\frac{2^n+3^{-n}}{n^2}\right|$ 
+                \item \textbf{Convergenza assoluta}: $\sum_{n=1}^{+\infty}\left|\frac{2^n+3^{-n}}{n^2}\right|$
                 \customfbox{Le forme indeterminate del tipo $f(n)^{g(n)}=\{0^0, \infty^0, 1^\infty\}$ si risolvono $f(n)^{g(n)}=e^{g(n)\ln\left(f(n)\right)}$}
                 \begin{enumerate}
                     \item \textbf{Criterio della radice}: \begin{equation*}
                         \begin{split}
                             \lim_{n\rightarrow+\infty}\sqrt[n]{\left|\frac{2^n+3^{-n}}{n^2}\right|}&=\lim_{n\rightarrow+\infty}\left(\left|\frac{2^n}{n^2}\right|\right)^{\frac{1}{n}}=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\ln\left(\frac{2^n}{n^2}\right)}\\
-                            &=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\ln\left({2^n}\right)-\ln\left({n^2}\right)}=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}n\ln\left({2}\right)-2\ln\left({n}\right)}\\
-                            &=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\ln\left({2^n}\right)-\ln\left({n^2}\right)}=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}n\ln\left({2}\right)-2\ln\left({n}\right)}\\
-                            &=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\ln\left({2^n}\right)-\ln\left({n^2}\right)}=\lim_{n\rightarrow+\infty}e^{\ln\left({2}\right)-\frac{2\ln\left({n}\right)}{n}}=e^{\ln(2)}=2
+                            &=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\left(\ln\left({2^n}\right)-\ln\left({n^2}\right)\right)}=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\left(n\ln\left({2}\right)-2\ln\left({n}\right)\right)}\\
+                            &=\lim_{n\rightarrow+\infty}e^{\ln\left({2}\right)-\frac{2\ln\left({n}\right)}{n}}=e^{\ln(2)}=2
                         \end{split}
                     \end{equation*}
-                    \item \textbf{Determiniamo $\rho$}: $\rho=\frac{1}{2}$ per definizione
-                    \item \textbf{Determinare $I$}: \begin{enumerate}
+                    \item \textbf{Determiniamo $\rho$}: $\rho=\frac{1}{2}$ per definizione\\
+                    \item \textbf{Determinare $I_c$}: \begin{enumerate}
                         \item si "creano" due serie diverse usando l'intervallo $\left[x_0-p,x_0+p\right]$ e sostituendo $x$ con entrambi gli estremi: \begin{equation*}
                             \begin{split}
                                 &\sum_{n=1}^{+\infty}\frac{2^n+3^{-n}}{n^2}\left(x_0-p\right)^n\\
@@ -286,7 +308,7 @@
                                 &\frac{2^n+3^{-n}}{n^2}\left(0+\frac{1}{2}\right)^n \rightarrow \text{analogamente a quella di sopra converge}
                             \end{split}                            
                         \end{equation*}
-                        \item Quindi, visto che converge per entrambi gli estremi $I=\left[-\frac{1}{2},\frac{1}{2}\right]$
+                        \item Quindi, visto che converge per entrambi gli estremi $I_c=\left[-\frac{1}{2},\frac{1}{2}\right]$
                     \end{enumerate}
                 \end{enumerate}
             \end{enumerate}
@@ -327,6 +349,7 @@
             \hline
         \end{tabular}
     \end{center}
+    \newpage
     \subsection{Esercizio da esame}
         \begin{itemize}
             \item \textit{Data la funzione $f(x)=x(e^x-1)+\ln(1+x^2)+\sin(2x)$, calcolarne il polinomio di McLaurin di ordine 4} \begin{enumerate}
@@ -408,10 +431,23 @@
             \item Se $f(x)$ è pari $\Rightarrow b_k$ nulli
             \item Se $f(x)$ è dispari $\Rightarrow a_k$ nulli tranne $a_0=0$
         \end{itemize}
-    \subsection{Calcolare il valore della serie di Fourier}
+    \subsection{Serie di Fourier}
         \begin{equation*}
             f(x)\sim \frac{a_0}{2}+\sum_{k=1}^{+\infty}\left[a_k\cos\left(\frac{2\pi k}{T}x\right)+b_k\sin\left(\frac{2\pi k}{T}x\right)\right]
         \end{equation*}
+    \subsection{Criterio di Dirichelet}
+        Permette di dire a cosa converge
+        \begin{itemize}
+            \item \textbf{Punti di continuità}: se $x_0$ è un punto in cui $f(x)$ è continua, la serie di Fourier converge al valore della funzione in quel punto: \begin{equation*}
+                S(x_0)=f(x_0)
+            \end{equation*}
+            \item \textbf{Punti di discontinuità}: se $x_0$ è un punto di discontinuità, la serie di Fourier $S(x_0)$ converge al valore medio tra il limite destro e il limite sinistro della funzione in quel punto: \begin{equation*}
+                S(x_0)=\frac{f(x_0^+)+f(x_0^-)}{2}
+            \end{equation*}
+            \item \textbf{Punti agli estremi dell'intervallo}: per i punti agli estremi dell'intervallo di integrazione, la serie di Fourier converge a: \begin{equation*}
+                S(\pm L)=\frac{f(L^-)+f(L^+)}{2}
+            \end{equation*}
+        \end{itemize}
     \subsection{Esercizio d'esame}
     \textit{Sia $f$ la funzione ottenuta estendendo per periodicità a tutto $\mathbb{R}$ la funzione} \begin{equation*}
         g(x)=\begin{cases}
