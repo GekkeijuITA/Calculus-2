@@ -113,4 +113,38 @@
                     \taylor{f}{0}{4}\left(\frac{1}{3}\right) = \frac{1}{3}-\left(\frac{1}{3}\right)^{2}\frac{1}{2}+\left(\frac{1}{3}\right)^{3}\frac{1}{3}-\left(\frac{1}{3}\right)^{4}\frac{1}{4}
                 \end{equation*}
     \section{Formula di Taylor con resto di Peano}
+        Dato $x_{0}\in I,\forall x \in I \text{ e } \forall n \geq 1$  si ha 
+        \begin{equation*}
+            f(x) = \taylor{f}{x_{0}}{n}(x) + (x-x_{0})^{n}\varepsilon(x-x_{0})
+        \end{equation*}
+        con $\lim_{x\rightarrow x_{0}}\varepsilon(x-x_{0})=0$
+        \subsection{Esercizi}
+            \subsubsection{Esercizio 1}
+                \textit{Sia $f(x)=e^{3x}x^{2}$ calcola il polinomio di Taylor  di $f$ centrato in 0 di ordine 4. Poi determina  $f^{VII}(0)$ e stima $R_{1}f(x)$ per $x\in\left[0,\frac{1}{8}\right]$}. \\
+                Abbiamo due possibilità:
+                \begin{enumerate}
+                    \item $\taylor{f}{0}{4}(x)=f(0)+f'(0)x+f''(0)\frac{x^{2}}{2}+f'''(0)\frac{x^{3}}{3!}+f^{IV}(0)\frac{x^{4}}{4!}$
+                    \item Usiamo la formula di Taylor con resto di Peano per $g(x)=e^{x}$: \begin{equation*}
+                        g^{(n)}(x)=e^{x} \quad \forall n\geq 1 \rightarrow g^{(n)}(0)=1 \quad \forall n\geq 1
+                    \end{equation*}
+                \end{enumerate}
+                Usando la seconda possibilità:
+                \begin{equation*}
+                    \begin{split}
+                        &e^{x}=1+x+\frac{x^{2}}{2}+\frac{x^{3}}{3!}+\frac{x^{4}}{4!}+x^{4}\varepsilon(x) \\
+                        &e^{3x} = g(3x) = \underbrace{1+3x+\frac{9}{2}x^{2}+\frac{9}{2}x^{3}+\frac{27}{8}x^{4}}_{\text{polinomio di grado 4}}+\underbrace{81x^{4}\varepsilon(3x)}_{x^{4}\left(81\varepsilon(3x)\right)} \\
+                        &= 1+3x+\frac{9}{2}x^{2}+\frac{9}{2}x^{3}+\frac{27}{8}x^{4}+x^{4}\varepsilon'(x)
+                    \end{split}
+                \end{equation*}
+                Quindi:
+                \begin{equation*}
+                    \begin{split}
+                        f(x) &= e^{3x}x^{2} \\
+                        &= x^{2}+3x^{3}+\frac{9}{2}x^{4}+\underbrace{\frac{9}{2}x^{5}+\frac{27}{8}x^{6}+x^{6}\varepsilon'(x)}_{x^{4}\left(\frac{9}{2}x+\frac{27}{8}x^{2}+x^{2}\varepsilon'(x)\right)}
+                    \end{split}
+                \end{equation*}
+                Quindi il polinomio di Taylor di $f$ centrato in 0 di ordine 4 è:
+                \begin{equation*}
+                    \taylor{f}{0}{4}(x) = x^{2}+3x^{3}+\frac{9}{2}x^{4}
+                \end{equation*}
 \end{document}
