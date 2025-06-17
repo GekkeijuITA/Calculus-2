@@ -1,0 +1,2 @@
+- Aggiungere esercizio svolto  5.1 Trovare f (n)(0) con n molto grande
+- Aggiungere esercizio svolto 5.2 Esercizio da esame
