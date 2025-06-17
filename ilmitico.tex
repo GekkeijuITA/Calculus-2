@@ -280,7 +280,6 @@
             \item \textit{Data la serie di potenze} $\sum_{n=1}^{+\infty}\frac{2^n+3^{-n}}{n^2}x^n$ \textit{determinare il raggio di convergenza $\rho$ e l'insieme di convergenza puntuale I}. \begin{enumerate}
                 \item \textbf{Cauchy}: $\lim_{n\rightarrow+\infty}\frac{2^n+3^{-n}}{n^2}=0$
                 \item \textbf{Convergenza assoluta}: $\sum_{n=1}^{+\infty}\left|\frac{2^n+3^{-n}}{n^2}\right|$
-                \customfbox{Le forme indeterminate del tipo $f(n)^{g(n)}=\{0^0, \infty^0, 1^\infty\}$ si risolvono $f(n)^{g(n)}=e^{g(n)\ln\left(f(n)\right)}$}
                 \begin{enumerate}
                     \item \textbf{Criterio della radice}: \begin{equation*}
                         \begin{split}
@@ -396,6 +395,25 @@
             \end{split}
         \end{equation*}
         Se $x=b$ e $x_0$ è vicino a $b$, $\taylor{f}{x_0}{n}(b)$ approssima $f(b)$ e $\left|f(b)-\taylor{f}{x_0}{n}(b)\right| = \left|R_nf(b)\right|$
+        \subsubsection{Determinare una stima del resto di Lagrange}
+            \begin{equation*}
+                \left|f^{(k+1)}(c)\right|\leq M
+            \end{equation*}
+            Dove $M$ è il maggiorante quindi prendiamo tutte le "sotto-funzioni" di $f^{(k+1)}(x)$ e combiniamo tutti i maggioranti tra di loro. Per calcolare la stima quindi:
+            \begin{equation*}
+                \left|R_k(x)\right|\leq \frac{M}{(k+1)!}x^{k+1}
+            \end{equation*}
+            \textit{Esempio:}
+            \begin{equation*}
+                \left|f''(x)\right|=\left|e^{-2x}\cdot 13\sin(3x+\phi)\right|
+            \end{equation*}
+            I valori maggioranti di questi sono $1$ e $13$ (perchè la funzione seno oscilla tra $-1$ e $1$ ma stiamo usando il modulo). Quindi:
+            \begin{equation*}
+                M = 1\cdot 13 = 13
+            \end{equation*}
+            \begin{equation*}
+                \left|R_1(x)\right|\leq \frac{M}{2!}x^2
+            \end{equation*}
     \subsection{Formula di Taylor con resti di Peano}
         \begin{equation*}
                 f(x)= \taylor{f}{x_0}{n}(x) + (x-x_0)^n + \varepsilon(x-x_0) \text{ con } \lim_{x\rightarrow x_0} \varepsilon(x-x_0) = 0
@@ -564,6 +582,7 @@
                     \hline
                 \end{tabular}
             \end{enumerate}
+    \subsection{Massimi e minimi vincolati}
     \subsection{Esercizio da esame}
     \textit{Sia $f(x,y)=\frac{3}{2}x^2-8x-4xy+4y^2+12\ln x$}
     \begin{enumerate}
@@ -609,4 +628,130 @@
             \end{itemize}
         \end{enumerate}
     \end{enumerate}
+\section{Extra}
+    \subsection{Metodo dell'angolo aggiunto}
+        Utile per riscrivere funzioni del tipo (a scelta)
+        \begin{equation*}
+            A\sin(x)+B\cos(x)=\begin{cases}
+                R\sin(x+\phi)\\
+                R\cos(x-\phi)
+            \end{cases}
+        \end{equation*}
+        \subsubsection{Caso $R\sin(x+\phi)$}
+            \begin{enumerate}
+                \item Sappiamo che $R\sin(x+\phi)=R\left(\sin(x)\cos(\phi)\right)+R\left(\cos(x)\sin(\phi)\right)$
+                \item $R=\sqrt{A^2+B^2}$
+                \item \begin{equation*}
+                    \phi=\arctan\left(\frac{B}{A}\right)=\begin{cases}
+                        \phi & A>0,B>0\\
+                        \phi+\pi & A<0, B>0\\
+                        \phi+\pi & A<0, B<0\\
+                        \phi & A>0,B<0
+                    \end{cases}
+                \end{equation*}
+            \end{enumerate}
+        \subsubsection{Caso $R\cos(x-\phi)$}
+            \begin{enumerate}
+                \item Sappiamo che $R\cos(x-\phi)=R\left(\cos(x)\cos(\phi)\right)+R\left(\sin(x)\sin(\phi)\right)$
+                \item $R=\sqrt{A^2+B^2}$
+                \item \begin{equation*}
+                    \phi=\arctan\left(\frac{A}{B}\right)=\begin{cases}
+                        \phi & A>0,B>0\\
+                        \phi+\pi & A<0, B>0\\
+                        \phi+\pi & A<0, B<0\\
+                        \phi & A>0,B<0
+                    \end{cases}
+                \end{equation*}
+            \end{enumerate}
+        \subsubsection{Esempio}
+        \begin{equation*}
+            \begin{split}
+                &-5\sin(3x)-12\cos(3x)\\
+                &A=-5,B=-12\\
+                &R=\sqrt{25+144}=13\\
+                &\phi=\arctan\left(\frac{-12}{-5}\right)\simeq 1.17+\pi\\
+                &-5\sin(3x)-12\cos(3x)\rightarrow 13\sin(3x+\phi)
+            \end{split}
+        \end{equation*}
+    \subsection{Determinare crescenza/decrescenza velocemente}
+        Se $h(n)=f(g(n))$
+        \begin{center}
+            \begin{tabular}{| c | c | c |}
+                \hline
+                $g(n)$ & $f(x)$ & $h(n)$\\
+                \hline
+                decrescente & crescente & descrescente\\
+                \hline
+                descrescente & decrescente & crescente\\
+                \hline
+                crescente & crescente & crescente\\
+                \hline
+                crescente & decrescente & decrescente\\
+                \hline
+            \end{tabular}
+        \end{center}
+    \subsection{Formule utili}
+        \customfbox{Le forme indeterminate del tipo $f(n)^{g(n)}=\{0^0, \infty^0, 1^\infty\}$ si risolvono: $f(n)^{g(n)}=e^{g(n)\ln\left(f(n)\right)}$}
+    \subsection{Equivalenze Asintotiche Notevoli (per $x \to 0$):}
+        \begin{center}
+            \begin{tabular}{|lll|}
+                \hline
+                \textbf{Funzione} & \textbf{Equivalenza asintotica} & \textbf{Dominio}\\
+                \hline
+                $\sin x$ & $x$ & $x \to 0$ \\
+                \hline
+                $\tan x$ & $x$ & $x \to 0$ \\
+                \hline
+                $\arcsin x$ & $x$ & $x \to 0$ \\
+                \hline
+                $\arctan x$ & $x$ & $x \to 0$ \\
+                \hline
+                $\ln(1+x)$ & $x$ & $x \to 0$ \\
+                \hline
+                $e^x - 1$ & $x$ & $x \to 0$ \\
+                \hline
+                $(1+x)^\alpha - 1$ & $\alpha x$ & $x \to 0, \alpha \neq 0$ \\
+                \hline
+                $\sqrt{1+x} - 1$ & $\frac{x}{2}$ & $x \to 0$ \\
+                \hline
+                $\cos x - 1$ & $-\frac{x^2}{2}$ & $x \to 0$ \\
+                \hline
+                $1 - \cos x$ & $\frac{x^2}{2}$ & $x \to 0$ \\
+                \hline
+                $\cosh x - 1$ & $\frac{x^2}{2}$ & $x \to 0$ \\
+                \hline
+                $\sinh x$ & $x$ & $x \to 0$ \\
+                \hline
+                $\tanh x$ & $x$ & $x \to 0$ \\
+                \hline
+            \end{tabular}
+        \end{center}
+
+        \subsubsection*{Equivalenze per $n \to +\infty$:}
+        \begin{center}
+            \begin{tabular}{|ll|}
+                \hline
+                \textbf{Funzione} & \textbf{Equivalenza asintotica} \\
+                \hline
+                $\displaystyle\sin\left(\frac{1}{n}\right)$ & $\displaystyle\frac{1}{n}$ \\
+                \hline
+                $\displaystyle\ln\left(1+\frac{1}{n}\right)$ & $\displaystyle\frac{1}{n}$ \\
+                \hline
+                $\displaystyle e^{1/n} - 1$ & $\displaystyle\frac{1}{n}$ \\
+                \hline
+                $\displaystyle\left(1+\frac{1}{n}\right)^n - e$ & $\displaystyle\frac{e}{2n}$ \\
+                \hline
+                $\displaystyle\sqrt{n+1} - \sqrt{n}$ & $\displaystyle\frac{1}{2\sqrt{n}}$ \\
+                \hline
+                $\displaystyle\ln(n+1) - \ln n$ & $\displaystyle\frac{1}{n}$ \\
+                \hline
+            \end{tabular}
+        \end{center}
+
+        \subsubsection*{Formule di Stirling:}
+        \begin{itemize}
+            \item $n! \sim \sqrt{2\pi n}\left(\frac{n}{e}\right)^n$ per $n \to +\infty$
+            \item $\binom{2n}{n} \sim \frac{4^n}{\sqrt{\pi n}}$ per $n \to +\infty$
+            \item $\{(n!)^2\} \sim \frac{2\pi n}{e^{2n}}\left(\frac{n}{e}\right)^{2n} = \frac{2\pi n}{e^{2n}}(n!)^2$
+        \end{itemize}
 \end{document}
