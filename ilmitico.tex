@@ -354,6 +354,7 @@
             \item Prendi il coefficiente di ordine $n$ di ogni sommatoria e poi sommali per ottenere il coefficiente totale
             \item Sapendo la formula del coefficiente $c_k$ dobbiamo isolare $f^{(k)}(0)$ moltiplicando entrambi i lati per $k!$
         \end{enumerate}
+        \textit{Esempio: }
     \subsection{Esercizio da esame}
         \begin{itemize}
             \item \textit{Data la funzione $f(x)=x(e^x-1)+\ln(1+x^2)+\sin(2x)$, calcolarne il polinomio di McLaurin di ordine 4} \begin{enumerate}
@@ -382,11 +383,41 @@
                 \item Poi costruiamo il polinomio $P_4(x)$ sommando l'ultima colonna: $P_4(x)=2x+2x^2-\frac{5x^3}{6}-\frac{x^4}{3}$
             \end{enumerate}
             \item \textit{Scrivere il resto di Lagrange $R_1(x)$ di ordine 1 (con centro in 0) della funzione $g(x)=\cos(x^2)+\sin(3x)$ e determinarne una stima per $x\in(0,\frac{1}{4}]$} \begin{enumerate}
-                \item %FAI QUESTO
+                \item \begin{equation*}
+                    \begin{split}
+                        &g'(x)=\frac{d}{dx}(g(x))=-2x\sin(x^2)+3\cos(3x)\\
+                        &g''(x)=\frac{d}{dx}(g'(x))=-4x^2\cos(x^2)-2\sin(x^2)-9\sin(3x)
+                    \end{split}
+                \end{equation*}
+                \item \begin{equation*}
+                    R_1(x)=\frac{g''(x)}{2!}x^2
+                \end{equation*}
+                \item \begin{equation*}
+                    \begin{split}
+                        &\left|g''(x)\right|\leq M\\
+                        &\left|4x^2\cos(x^2)+2\sin(x^2)+9\sin(3x)\right|\leq \left|4x^2\cos(x^2)\right|+\left|2\sin(x^2)\right|+\left|9\sin(3x)\right|\\
+                    \end{split}
+                \end{equation*}
+                \item Troviamo gli equivalenti asintotici per i singoli elementi di "$M$" \begin{equation*}
+                    \begin{split}
+                        &\sin(x^2)\sim x^2\\
+                        &\sin(3x) \sim 3x\\
+                        &\cos(x^2) \sim 1 \rightarrow \text{Usiamo 1 perchè vogliamo fare una stima grossolana}
+                    \end{split}
+                \end{equation*}
+                \item \begin{equation*}
+                    \left|4x^2\cos(x^2)\right|+\left|2\sin(x^2)\right|+\left|9\sin(3x)\right|=4x^2+2x^2+27x=6x^2+27x
+                \end{equation*}
+                \item Sostituiamo $x=\frac{1}{4}$ perchè è la $x$ più grande che possiamo usare: \begin{equation*}
+                    \frac{3}{8}+\frac{27}{4}=\frac{57}{8}
+                \end{equation*}
+                \item Quindi: \begin{equation*}
+                    \left|R_1(x)\right|\leq \frac{M}{2!}x^2\rightarrow\frac{57}{8}\frac{1}{2}x^2=\frac{57}{16}x^2\simeq 3.56x^2
+                \end{equation*}
             \end{enumerate}
         \end{itemize}
 \newpage
-        \section{Formula di Taylor}
+\section{Formula di Taylor}
     \customfbox{$f^{(n)}$ indica l'ordine di derivazione $n$-esimo}
     Data una funzione $f:I\rightarrow\mathbb{R}$ definita su un intervallo $I$ e derivabile infinite volte ($C^{\infty}$)
     \subsection{Polinomio di Taylor di $f$ centrato in $x_0$ di ordine $n$}
@@ -402,10 +433,11 @@
         \end{equation*}
         Se $x=b$ e $x_0$ è vicino a $b$, $\taylor{f}{x_0}{n}(b)$ approssima $f(b)$ e $\left|f(b)-\taylor{f}{x_0}{n}(b)\right| = \left|R_nf(b)\right|$
         \subsubsection{Determinare una stima del resto di Lagrange}
+            Se dobbiamo calcolarlo con $x\in(0,a]$ al posto della $x$ negli argomenti delle sotto-funzioni ci mettiamo $a$ e calcoliamo $M$ in base a quello.
             \begin{equation*}
                 \left|f^{(k+1)}(c)\right|\leq M
             \end{equation*}
-            Dove $M$ è il maggiorante quindi prendiamo tutte le "sotto-funzioni" di $f^{(k+1)}(x)$ e combiniamo tutti i maggioranti tra di loro. Per calcolare la stima quindi:
+            Dove $M$ è il maggiorante quindi prendiamo tutte le "sotto-funzioni" di $f^{(k+1)}(x)$ e combiniamo tutti i maggioranti tra di loro oppure calcoliamo $f^{(k+1)}(a)$. Per calcolare la stima quindi:
             \begin{equation*}
                 \left|R_k(x)\right|\leq \frac{M}{(k+1)!}x^{k+1}
             \end{equation*}
@@ -417,6 +449,7 @@
             \begin{equation*}
                 M = 1\cdot 13 = 13
             \end{equation*}
+            Oppure calcoliamo $\left|f''(a)\right|$ per trovare $M$.
             \begin{equation*}
                 \left|R_1(x)\right|\leq \frac{M}{2!}x^2
             \end{equation*}
@@ -728,6 +761,8 @@
                 \hline
                 $\sin x$ & $x$ & $x \to 0$ \\
                 \hline
+                $\cos x$ & $1-\frac{x^2}{2}$ & $x \to 0$ \\
+                \hline
                 $\tan x$ & $x$ & $x \to 0$ \\
                 \hline
                 $\arcsin x$ & $x$ & $x \to 0$ \\
@@ -752,6 +787,12 @@
                 \hline
                 $\tanh x$ & $x$ & $x \to 0$ \\
                 \hline
+                &&\\
+                \hline
+                &&\\
+                \hline
+                &&\\
+                \hline
             \end{tabular}
             \begin{tabular}{|ll|}
                 \hline
@@ -768,6 +809,16 @@
                 $\displaystyle\sqrt{n+1} - \sqrt{n}$ & $\displaystyle\frac{1}{2\sqrt{n}}$ \\
                 \hline
                 $\displaystyle\ln(n+1) - \ln n$ & $\displaystyle\frac{1}{n}$ \\
+                \hline
+                &\\
+                \hline
+                &\\
+                \hline
+                &\\
+                \hline
+                &\\
+                \hline
+                &\\
                 \hline
             \end{tabular}
         \end{center}
