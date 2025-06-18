@@ -354,7 +354,13 @@
             \item Prendi il coefficiente di ordine $n$ di ogni sommatoria e poi sommali per ottenere il coefficiente totale
             \item Sapendo la formula del coefficiente $c_k$ dobbiamo isolare $f^{(k)}(0)$ moltiplicando entrambi i lati per $k!$
         \end{enumerate}
-        \textit{Esempio: }
+        \textit{Esempio: calcolare $f^{(15)}(0)$ di $f(x)=e^{2x}-\frac{x^2}{1+x}$}
+        \begin{enumerate}
+            \item $e^{2x}\rightarrow\sum_{n=0}^{\infty}\left(\frac{(2x)^n}{n!}\right)\xrightarrow{n=15}\frac{(2x)^{15}}{15!}$
+            \item $\frac{x^2}{1+x}\rightarrow\sum_{n=0}^{\infty}\left((-x)^n\cdot x^2\right)=\sum_{n=0}^{\infty}\left((-1)^n\cdot x^n\cdot x^2\right)=\sum_{n=0}^{\infty}\left((-1)^n\cdot x^{n+2}\right)\xrightarrow{n=13} -x^{15}$
+            \item $a_{15}=\frac{2^{15}}{15!}x^{15}+x^{15}=x^{15}\left(\frac{2^{15}}{15!}+1\right)\xrightarrow{\text{togliamo le x}} \frac{2^{15}}{15!}+1$
+            \item $f^{(15)}(0)=15!\cdot a_{15}=2^{15}\cdot 15!$
+        \end{enumerate}
     \subsection{Esercizio da esame}
         \begin{itemize}
             \item \textit{Data la funzione $f(x)=x(e^x-1)+\ln(1+x^2)+\sin(2x)$, calcolarne il polinomio di McLaurin di ordine 4} \begin{enumerate}
