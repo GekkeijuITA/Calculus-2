@@ -3,7 +3,6 @@
 \input{variables.tex}
 \preamble
 \begin{document}
-\section{Serie Notevoli}
     \begin{center}
         \begin{tabular}{|c|p{6cm}|p{5cm}|}
             \hline
@@ -22,94 +21,19 @@
                     \text{Indeterminata} & \text{se } q \leq -1
                 \end{cases}$ \\
             \hline
+            \textbf{Serie di Funzioni} & $\displaystyle \sum_{n=1}^{\infty}f_n(x)$ & \\
+            \hline
+            \textbf{Serie di Potenze} & $\displaystyle \sum_{n=0}^{\infty}a_n x^n$ o $\sum_{n=0}^{\infty}a_n x^{(n+1)}$ & \\
+            \hline
+            \textbf{Serie a segni alterni} & $\displaystyle\sum_{n=1}^{\infty}(-1)^n a_n$ o $\sum_{n=1}^{\infty}(-1)^{n+1} a_n$ & \\
+            \hline
+            \textbf{Serie a segni positivi} & $\displaystyle\sum_{n=1}^{\infty}a_n$ & \\
+            \hline
         \end{tabular}
     \end{center}
-\section{Serie di Funzioni}
-    Data la serie di funzioni:
-    \begin{equation*}
-        f(x) = \sum_{n=1}^{\infty}f_n(x)
-    \end{equation*}
-    \begin{enumerate}
-        \item \textbf{Converge puntualmente} su $I$ se la serie converge $\forall x\in I$ e $f:I\rightarrow\mathbb{R}$
-        \item \textbf{Converge assolutamente} su $I$ se la serie a termini positivi $\left(\left|f_n(x)\right|\right)$ converge $\forall x\in I$
-    \end{enumerate}
-    \textit{Se per qualche $x\in I$ la serie diverge o è indeterminata, bisogna restringere il dominio della funzione somma $f(x)$ all'insieme:} \begin{equation*}
-        \left\{x\in I \mid \sum_{n=1}^{\infty}f_n(x) \text{ converge}\right\}
-    \end{equation*}
-    \subsection{Criterio di Weierstrass}
-        Data una serie di funzioni, se la serie numerica a termini positivi converge:
-        \begin{equation*}
-            \sum_{n=1}^{\infty}\sup_{x\in I}\left|f_n(x)\right|
-        \end{equation*}
-        allora la serie di funzioni converge assolutamente e puntualmente (= totalmente) su $I$.
-    \subsection{Strategia di Studio della Convergenza}
-        \begin{enumerate}
-            \item \textbf{Convergenza Puntuale:} Determinare l'insieme $I_p$ per cui $\forall x \in I_p$, la serie numerica $\sum f_n(x)$ converge. (Spesso con Criteri per serie numeriche).
-            \item \textbf{Convergenza Assoluta:} Su $I_p$, studiare $\sum |f_n(x)|$.
-            \item \textbf{Convergenza Uniforme/Totale:}
-            \begin{itemize}
-                \item Tentare il \textbf{Criterio di Weierstrass}: se $\sum \sup_{x \in I} |f_n(x)|$ converge, allora la serie converge totalmente su $I$.
-                \item Se Weierstrass non funziona su $I_p$ (es. perché $\sup|f_n(x)|$ diverge, ma la serie converge comunque), cercare intervalli $J \subset I_p$ dove $\sup|f_n(x)|$ è finito e applicare Weierstrass.
-                \item (Meno comune per gli esami, ma utile: altri criteri come quello di Abel-Dirichlet per convergenza uniforme.)
-            \end{itemize}
-        \end{enumerate}
-    \customfbox{Convergenza totale $\Rightarrow$ convergenza puntuale}
-    \subsection{Corollari}
-        \subsubsection{Continuità della somma}
-            Se:
-            \begin{enumerate}
-                \item Le funzioni $f_n(x)$ sono continue su $I\forall n\geq 1$
-                \item La serie converge totalmente su $I$ ad $f(x)$  
-            \end{enumerate}
-            Allora $f(x)$ è continua su $I$.
-        \subsubsection{Integrazione temine a termine}
-            Data una serie di funzioni dove le funzioni $f_n(x)$ sono definite su $[a,b]$ se:
-            \begin{enumerate}
-                \item Le funzioni $f_n$ sono continue su $[a,b]\forall n\geq 1$
-                \item La serie converge totalmente su $[a,b]$ ad $f(x)$
-            \end{enumerate}
-            Allora $f(x)$ è integrabile in $[a,b]$:
-            \begin{equation*}
-                \int_{a}^{b}f(x)dx = \sum_{n=1}^{\infty}\int_{a}^{b}f_n(x)dx
-            \end{equation*}
-        \subsubsection{Derivazione termine a termine}
-            Data una serie di funzioni dove le funzioni $f_n(x)$ sono definite su $I$ se:
-            \begin{enumerate}
-                \item Le funzioni $f_n$ sono derivabili e le derivate sono funzioni continue $\forall n\geq 1$
-                \item La serie $\sum_{n=1}^{\infty}f_n(x)$ converge puntualmente su $I$
-                \item La serie $\sum_{n=1}^{\infty}f'_n(x)$ converge totalmente su $I$
-            \end{enumerate}
-            Allora $f(x)$ derivabile e:
-            \begin{equation*}
-                f'(x) = \sum_{n=1}^{\infty}f'_n(x) \quad \forall x\in I
-            \end{equation*}
-        \subsubsection{Corollario 1.34}
-            Data una serie di funzioni definite su $[a,b]$ se:
-            \begin{enumerate}
-                \item Le funzioni $f_n(x)$ sono continue su $[a,b]\forall n\geq 1$
-                \item La serie converge totalamente su $(a,b)$
-            \end{enumerate}
-            Allora la serie converge totalmente su $[a,b]$ e la funzione somma è continua su $[a,b]$
+
 \section{Serie di potenze}
-    La serie di funzioni
-    \begin{equation*}
-        \sum_{n=0}^{\infty}a_n x^n
-    \end{equation*}            
-    si chiama \textbf{serie di potenze di centro 0}
     \subsection{Raggio di Convergenza $R$}
-        Sia $\sum_{n=0}^{\infty}a_n x^n$ una serie di potenze di centro 0. Esiste un unico $R \in [0,+\infty) \cup \{+\infty\}$, detto Raggio di Convergenza, tale che:
-        \begin{itemize}
-            \item Se $R=0$: la serie converge \textbf{solo in $x=0$}.
-            \item Se $0<R<+\infty$:
-            \begin{itemize}
-                \item Converge \textbf{assolutamente} su $(-R, R)$.
-                \item Converge \textbf{totalmente} su $[-K,K]$ per ogni $0 < K < R$.
-                \item Non converge per $|x|>R$.
-            \end{itemize}
-            \item Se $R=+\infty$: la serie converge \textbf{assolutamente} su $\mathbb{R}$ e \textbf{totalmente} su $[-K,K]$ per ogni $K > 0$.
-        \end{itemize}
-        \textbf{Nota:} La convergenza agli estremi $x = \pm R$ deve essere studiata separatamente (convergenza puntuale).
-    \subsubsection{Calcolo di $R$ (Criteri del Rapporto/Radice)}
         Sia $l = \lim_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right|$ o $l = \lim_{n\to\infty} \sqrt[n]{|a_n|}$.
         Allora il raggio di convergenza $R$ è dato da:
         \begin{equation*}
@@ -122,29 +46,9 @@
     \subsection{Insieme di Convergenza Puntuale $I_c$}
         L'insieme di convergenza puntuale si ottiene studiando la convergenza della serie negli estremi dell'intervallo $(-R, R)$.
         \begin{enumerate}
-            \item Sostituire $x = R$ nella serie e studiare la convergenza della serie numerica $\sum a_n R^n$.
-            \item Sostituire $x = -R$ nella serie e studiare la convergenza della serie numerica $\sum a_n (-R)^n$.
+            \item $\sum_{n=0}^{\infty}a_n (\pm R)^n$
             \item L'insieme $I_c$ sarà $(-R,R)$, $[-R,R)$, $(-R,R]$ o $[-R,R]$ a seconda della convergenza agli estremi.
         \end{enumerate}
-    \subsection{Proprietà della Funzione Somma $f(x) = \sum_{n=0}^{\infty}a_n x^n$}
-        Sia $f(x) = \sum_{n=0}^{\infty}a_n x^n$ una serie di potenze con raggio di convergenza $R > 0$.
-        \begin{itemize}
-            \item \textbf{Continuità:} La funzione somma $f(x)$ è continua sull'intervallo aperto $(-R, R)$.
-            \item \textbf{Derivabilità Termine a Termine:} $f(x)$ è derivabile infinite volte su $(-R, R)$, e la sua derivata $k$-esima si ottiene derivando la serie termine a termine:
-            \begin{equation*}
-                f^{(k)}(x) = \sum_{n=k}^{\infty}a_n \frac{n!}{(n-k)!}x^{n-k} \quad \forall x \in (-R,R)
-            \end{equation*}
-            Il raggio di convergenza delle serie derivate è ancora $R$.
-            \item \textbf{Integrazione Termine a Termine:} $f(x)$ è integrabile su ogni intervallo compatto contenuto in $(-R, R)$, e la sua primitiva si ottiene integrando la serie termine a termine:
-            \begin{equation*}
-                \int f(x)dx = \sum_{n=0}^{\infty}a_n\frac{x^{n+1}}{n+1} + C
-            \end{equation*}
-            Il raggio di convergenza della serie integrata è ancora $R$.
-            \item \textbf{Coefficienti di Maclaurin:} I coefficienti $a_n$ della serie di potenze sono legati alle derivate della funzione somma $f(x)$ nel centro ($x=0$) dalla relazione fondamentale:
-            $$a_n = \frac{f^{(n)}(0)}{n!} \quad \text{o equivalentemente } f^{(n)}(0) = n!a_n$$
-            Questo significa che la serie di potenze è lo sviluppo di Maclaurin della sua funzione somma.
-            \item \textbf{Unicità dello Sviluppo:} Se due serie di potenze di centro 0 convergono alla stessa funzione su un intervallo $(-\delta, \delta)$ con $\delta > 0$, allora i loro coefficienti devono essere identici: $a_n = b_n$ per ogni $n$.
-        \end{itemize}
 \section{Convergenza e Divergenza delle Serie Numeriche}
     \subsection{Convergenza Assoluta e Semplice}
         \begin{equation*}
@@ -152,7 +56,7 @@
         \end{equation*}
         \textbf{Teorema:} Se una serie converge assolutamente $\implies$ converge semplicemente.
     \subsection{Condizione Necessaria di Cauchy per le Serie}
-        Data una serie qualsiasi $\sum_{n=1}^{\infty}a_n$:
+        Data una serie qualsiasi:
         \begin{equation*}
             \lim_{n\rightarrow+\infty}a_n = \begin{cases}
                 0 & \Rightarrow \text{la serie \textbf{può} convergere o divergere (caso dubbio)} \\
@@ -197,17 +101,6 @@
                 \end{cases}
             \end{equation*}
             \textit{Suggerimento per scegliere $b_n$}: Prendi i termini di grado maggiore in numeratore e denominatore di $a_n$. (Es. $a_n=\frac{n+1}{n^2+3} \Rightarrow b_n=\frac{n}{n^2}=\frac{1}{n}$)
-
-            \item \textbf{Test dell'Integrale}:
-            Sia $f: [1, +\infty) \to \mathbb{R}$ una funzione positiva e decrescente.
-            Posto $a_n = f(n)$ per ogni $n \geq 1$, allora:
-            \begin{equation*}
-                \sum_{n=1}^{\infty} a_n \text{ converge } \iff \int_{1}^{+\infty} f(x)dx \text{ converge}
-            \end{equation*}
-            Inoltre, valgono le disuguaglianze per la somma $S$ della serie e l'integrale improprio $I$:
-            \begin{equation*}
-                \int_{1}^{+\infty} f(x)dx \leq S \leq a_1 + \int_{1}^{+\infty} f(x)dx
-            \end{equation*}
         \end{itemize}
 
     \subsection{Criteri di Convergenza per Serie a Termini di Segno Alterno}
@@ -234,84 +127,46 @@
             Allora la serie $\sum_{n=1}^{\infty}a_nb_n$ converge.
             \textit{(Questo criterio è più generale di Leibniz, che è un caso particolare di Dirichlet con $a_n = (-1)^n$ o $(-1)^{n+1}$)}.
         \end{itemize}
-
     \begin{center}
         \includegraphics[width=.8\textwidth]{Images/convergenzaflowchart.png}
     \end{center}
 
     \subsection{Esercizio d'esame}
-        \textit{Stabilire se le seguenti serie sono a termini positivi e convergono semplicemente e/o assolutamente.}
-        \begin{enumerate}
-            \item $\sum_{n=1}^{+\infty}(-1)^{n+1}\sin\left(\frac{1001}{\sqrt{n}}\right)$ 
-            \begin{enumerate}
-                \item \textbf{Cauchy}: $\lim_{n\rightarrow+\infty}\sin\left(\frac{1001}{\sqrt{n}}\right)=\sin\left(\frac{1001}{\infty}\right)=\sin(0)=0$
-                \item \textbf{Convergenza assoluta}: $\sum_{n=1}^{+\infty}\left|(-1)^{n+1}\sin\left(\frac{1001}{\sqrt{n}}\right)\right|=\sum_{n=1}^{+\infty}\sin\left(\frac{1001}{\sqrt{n}}\right)$ 
-                    \begin{enumerate}
-                        \item \textbf{Criterio di confronto asintotico}: \scriptsize$a_n = \sin\left(\frac{1001}{\sqrt{n}}\right), b_n = \frac{1001}{\sqrt{n}} \rightarrow \lim_{n\rightarrow+\infty}\frac{a_n}{b_n}=\lim_{n\rightarrow+\infty}\frac{\sin\left(\frac{1001}{\sqrt{n}}\right)}{\frac{1001}{\sqrt{n}}}=1$\normalsize \\ $\rightarrow$ $a_n$ e $b_n$ hanno lo stesso comportamento.
-                        \item \textbf{Serie armonica generalizzata}: $\frac{1001}{\sqrt{n}}\rightarrow\alpha=\frac{1}{2}\Rightarrow$ diverge
-                        \item Grazie al punto precedente possiamo dire che la serie originale non converge assolutamente (perchè è una serie a segno alternato), ora procederemo con Leibnitz
-                    \end{enumerate}
-                \item \textbf{Criterio di Leibnitz}: 
-                    \begin{enumerate}
-                        \item $\lim_{n\rightarrow+\infty}\sin\left(\frac{1001}{\sqrt{n}}\right)=0?$ L'abbiamo già fatto nel punto (a)
-                        \item Decrescente? \begin{enumerate}
-                        \item $a_n'=\cos\left(\frac{1001}{\sqrt{n}}\right)\cdot\left(-\frac{1001}{2\sqrt{n}}\cdot\frac{1}{n}\right)=\cos\left(\frac{1001}{\sqrt{n}}\right)\cdot\left(-\frac{1001}{2n^{\frac{1}{2}}n}\right)=\cos\left(\frac{1001}{\sqrt{n}}\right)\cdot\left(-\frac{1001}{2n^{\frac{3}{2}}}\right)$
-                        \item $a'_n>0\begin{cases}
-                                \cos\left(\frac{1001}{\sqrt{n}}\right)>0\rightarrow -\frac{\pi}{2}\leq\frac{1001}{\sqrt{n}}\leq\frac{\pi}{2}\rightarrow n \geq 406269\\
-                                \left(-\frac{1001}{2n^{\frac{3}{2}}}\right)>0\rightarrow \text{Impossibile sarà sempre negativo perchè } n\geq 1
-                            \end{cases}$
-                        \item Quindi sapendo che la serie è decrescente con $n\geq 406269$, possiamo dire che anche questo requisito è soddisfatto
-                    \end{enumerate}
-                \end{enumerate}
-                \item \textbf{Conclusione}: visto che la serie soddisfa tutti i requisiti del criterio di Leibnitz allora converge semplicemente.
+        \textit{Dire se le seguenti serie convergono semplicemente e/o assolutamente}
+        \begin{itemize}
+            \item $\displaystyle \sum_{n=1}^{+\infty} \frac{2\sqrt{n}-1}{\binom{2n}{3n}}$ \begin{enumerate}
+                \item $\displaystyle \binom{2n}{3n}\sim \frac{1}{\sqrt{2\pi n}}\sqrt{\frac{3}{2}}\left(\frac{27}{4}\right)^n\sim \frac{\sqrt{3}}{\sqrt{4\pi n}}\left(\frac{27}{4}\right)^n\sim\frac{\sqrt{3}}{2\sqrt{\pi n}}\left(\frac{27}{4}\right)^n$
+                \item Cauchy: $\displaystyle \lim_{n\to +\infty}\frac{2\sqrt{n}-1}{\binom{2n}{3n}}=\lim_{n\to +\infty}\frac{2\sqrt{n}-1}{\frac{\sqrt{3}}{2\sqrt{\pi n}}\left(\frac{27}{4}\right)^n}=\lim_{n\to +\infty}\frac{4n\sqrt{\pi}-2\sqrt{\pi n}}{\sqrt{3}\left(\frac{27}{4}\right)^n}=0$ verificato
+                \item Equivalente asintotico: $\displaystyle \frac{4n\sqrt{\pi}-2\sqrt{\pi n}}{\sqrt{3}\left(\frac{27}{4}\right)^n}\sim \frac{n}{\left(\frac{27}{4}\right)^n}$
+                \item Criterio della radice: $\displaystyle \lim_{n\to +\infty}\sqrt[n]{\frac{n}{\left(\frac{27}{4}\right)^n}}=\lim_{n\to +\infty}\left(\frac{n^{\frac{1}{n}}}{\frac{27}{4}}\right)=\frac{1}{\frac{27}{4}}=\frac{4}{27}<1\Rightarrow$ converge assolutamente
             \end{enumerate}
-            \item $\sum_{n=1}^{+\infty}\frac{n(3-(\cos n)^2)}{n^3+2n+1}$ \begin{enumerate}
-                \item \textbf{Cauchy}: $\lim_{n\rightarrow+\infty}\frac{n(3-(\cos n)^2)}{n^3+2n+1}=0$
-                \item \textbf{Convergenza assoluta}: $\sum_{n=1}^{+\infty}\left|\frac{n(3-(\cos n)^2)}{n^3+2n+1}\right|$ \begin{enumerate}
-                    \item \textbf{Criterio di confronto asintotico:} $a_n=\frac{n(3-(\cos n)^2)}{n^3+2n+1}, b_n=\frac{1}{n^2}$
-                    \begin{equation*}
-                            \lim_{n\rightarrow+\infty}\frac{a_n}{b_n}=\lim_{n\rightarrow+\infty}\frac{\frac{n(3-(\cos n)^2)}{n^3+2n+1}}{\frac{1}{n^2}}=\lim_{n\rightarrow+\infty}\frac{n^3\left(3-(\cos n)^2\right)}{n^3+2n+1} = \lim_{n\rightarrow+\infty}\frac{\left(3-(\cos n)^2\right)}{1+\frac{2}{n^2}+\frac{1}{n^3}}=3
-                    \end{equation*}
-                    \item \textbf{Serie armonica generalizzata}: $\frac{1}{n^2}\rightarrow  \alpha=2\Rightarrow b_n$ converge
-                \end{enumerate}
-                \item \textbf{Conclusione:} Grazie al punto precedente e al teorema del confronto possiamo affermare che la serie converge assolutamente e, di conseguenza, semplicemente.
-            \end{enumerate}
-            \item \textit{Data la serie di potenze} $\sum_{n=1}^{+\infty}\frac{2^n+3^{-n}}{n^2}x^n$ \textit{determinare il raggio di convergenza $\rho$ e l'insieme di convergenza puntuale I}. \begin{enumerate}
-                \item \textbf{Cauchy}: $\lim_{n\rightarrow+\infty}\frac{2^n+3^{-n}}{n^2}=0$
-                \item \textbf{Convergenza assoluta}: $\sum_{n=1}^{+\infty}\left|\frac{2^n+3^{-n}}{n^2}\right|$
-                \begin{enumerate}
-                    \item \textbf{Criterio della radice}: \begin{equation*}
+            \item $\displaystyle \sum_{n=2}^{+\infty}(-1)^{n+1}\frac{3n}{n^2-2n+1}$ \begin{enumerate}
+                \item Cauchy: $\displaystyle \lim_{n\to +\infty}\frac{3n}{n^2-2n+1}=\frac{+\infty}{+\infty_2}=0$ verificato
+                \item Equivalente asintotico: $\displaystyle \frac{3n}{n^2-2n+1}\sim \frac{n}{n^2}\sim\frac{1}{n}\Rightarrow$ non converge assolutamente (serie armonica generalizzata $\alpha\leq 1$)
+                \item Leibnitz: \begin{enumerate}
+                    \item Cauchy verificato prima
+                    \item Decrescente? \begin{equation*}
                         \begin{split}
-                            \lim_{n\rightarrow+\infty}\sqrt[n]{\left|\frac{2^n+3^{-n}}{n^2}\right|}&=\lim_{n\rightarrow+\infty}\left(\left|\frac{2^n}{n^2}\right|\right)^{\frac{1}{n}}=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\ln\left(\frac{2^n}{n^2}\right)}\\
-                            &=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\left(\ln\left({2^n}\right)-\ln\left({n^2}\right)\right)}=\lim_{n\rightarrow+\infty}e^{\frac{1}{n}\left(n\ln\left({2}\right)-2\ln\left({n}\right)\right)}\\
-                            &=\lim_{n\rightarrow+\infty}e^{\ln\left({2}\right)-\frac{2\ln\left({n}\right)}{n}}=e^{\ln(2)}=2
+                            \frac{3n}{(n-1)^2} &\geq \frac{3(n+1)}{((n+1)-1)^2}\\
+                            \frac{n}{(n-1)^2} &\geq \frac{(n+1)}{((n+1)-1)^2}\\
+                            n &\geq \frac{(n+1)(n-1)^2}{((n+1)-1)^2}\\
+                            n((n+1)-1)^2 &\geq (n+1)(n-1)^2\\
+                            n^2+n-1&\geq 0\\
+                            n_{1,2}&=\frac{-1\pm\sqrt{5}}{2}\rightarrow \text{decrescente da qua in poi}
                         \end{split}
                     \end{equation*}
-                    \item \textbf{Determiniamo $\rho$}: $\rho=\frac{1}{2}$ per definizione\\
-                    \item \textbf{Determinare $I_c$}: \begin{enumerate}
-                        \item si "creano" due serie diverse usando l'intervallo $\left[x_0-p,x_0+p\right]$ e sostituendo $x$ con entrambi gli estremi: \begin{equation*}
-                            \begin{split}
-                                &\sum_{n=1}^{+\infty}\frac{2^n+3^{-n}}{n^2}\left(x_0-p\right)^n\\
-                                &\sum_{n=1}^{+\infty}\frac{2^n+3^{-n}}{n^2}\left(x_0+p\right)^n
-                            \end{split}
-                        \end{equation*}
-                        \item \textbf{Studiamo la convergenza di entrambe}: \begin{equation*}
-                            \begin{split}
-                                &\frac{2^n+3^{-n}}{n^2}\left(0-\frac{1}{2}\right)^n=\frac{\left(2^n+3^{-n}\right)\left(-\frac{1}{2}\right)^n}{n^2}=\frac{(-1)^n+\left(-\frac{1}{6}\right)^n}{n^2}\\
-                                &\rightarrow\left|\frac{(-1)^n+\left(-\frac{1}{6}\right)^n}{n^2}\right|=\frac{1+\left(\frac{1}{6}\right)^n}{n^2}\\
-                                &=\frac{1}{n^2}+\frac{\left(\frac{1}{6}\right)^n}{n^2}=\begin{cases}
-                                    \frac{1}{n^2} & \text{serie armonica, converge}\\
-                                    \frac{\left(\frac{1}{6}\right)^n}{n^2}\rightarrow \frac{\frac{\left(\frac{1}{6}\right)^n}{n^2}}{\left(\frac{1}{6}\right)^n} & \scriptsize\text{per confronto asintoto } b_n \text{ converge perchè serie geometrica}\normalsize
-                                \end{cases}\\
-                                &\frac{2^n+3^{-n}}{n^2}\left(0+\frac{1}{2}\right)^n \rightarrow \text{analogamente a quella di sopra converge}
-                            \end{split}                            
-                        \end{equation*}
-                        \item Quindi, visto che converge per entrambi gli estremi $I_c=\left[-\frac{1}{2},\frac{1}{2}\right]$
-                    \end{enumerate}
+                    \item Soddisfa entrambi i requisiti quindi converge semplicemente
                 \end{enumerate}
             \end{enumerate}
-        \end{enumerate}
-\newpage
+            \item \textit{Determinare l'insieme di convergenza puntuale $I$ della serie di potenze}   $\displaystyle \sum_{n=1}^{+\infty}\frac{n}{5^n}x^n$ \begin{enumerate}
+                \item Cauchy: $\displaystyle \frac{n}{5^n}=0$
+                \item Criterio della radice: $\displaystyle \lim_{n\to +\infty}\sqrt[n]{\left|\frac{n}{5^n}\right|}=\lim_{n\to +\infty}\frac{n^\frac{1}{n}}{5}=\frac{1}{5}$
+                \item $\displaystyle R=\frac{1}{\frac{1}{5}}=5$
+                \item $\displaystyle\sum \frac{n}{5^n}(-5)^n=\sum -n \qquad \lim_{n\to +\infty}|-n|=+\infty$
+                \item $\displaystyle\sum \frac{n}{5^n}5^n=\sum n \qquad \lim_{n\to +\infty}n=+\infty$
+                \item $I=(-5,5)$
+            \end{enumerate}
+        \end{itemize}
 \section{Polinomio di McLaurin}
     Consideriamo:
     \begin{equation*}
@@ -361,7 +216,20 @@
             \item $a_{15}=\frac{2^{15}}{15!}x^{15}+x^{15}=x^{15}\left(\frac{2^{15}}{15!}+1\right)\xrightarrow{\text{togliamo le x}} \frac{2^{15}}{15!}+1$
             \item $f^{(15)}(0)=15!\cdot a_{15}=2^{15}\cdot 15!$
         \end{enumerate}
-    \subsection{Esercizio da esame}
+    \subsection{Resto di Lagrange}
+        Per trovare il resto di Lagrange di ordine $k$ con centro $x_0$ (solitamente è 0) di una funzione $g(x)$:
+        $$
+            R_k(x) = \frac{g''(x)}{(k+1)!}x^{(k+1)}
+        $$
+        Per fare una stima in un intervallo $x\in I$:
+        \begin{enumerate}
+            \item $|g''(x)|\leq M$
+            \item $M$ è la sommatoria di tutti gli elementi di $g''(x)$ a modulo, è possibile usare la disuguaglianza triangolare: $|x-y|\leq |x|+|y|$
+            \item Troviamo gli equivalenti asintotici di $M$
+            \item Sostituiamo $x$ con il valore di $I$ più grande che possiamo usare
+            \item La stima è $\displaystyle |R_k(x)|\leq \frac{M}{(k+1)!}x^{(k+1)}$
+        \end{enumerate}
+        \subsection{Esercizio da esame}
         \begin{itemize}
             \item \textit{Data la funzione $f(x)=x(e^x-1)+\ln(1+x^2)+\sin(2x)$, calcolarne il polinomio di McLaurin di ordine 4} \begin{enumerate}
                 \item Dividiamo $f(x)$ in polinomi che contengono le funzioni elementari quindi avremo: \begin{itemize}
@@ -389,30 +257,22 @@
                 \item Poi costruiamo il polinomio $P_4(x)$ sommando l'ultima colonna: $P_4(x)=2x+2x^2-\frac{5x^3}{6}-\frac{x^4}{3}$
             \end{enumerate}
             \item \textit{Scrivere il resto di Lagrange $R_1(x)$ di ordine 1 (con centro in 0) della funzione $g(x)=\cos(x^2)+\sin(3x)$ e determinarne una stima per $x\in(0,\frac{1}{4}]$} \begin{enumerate}
-                \item \begin{equation*}
-                    \begin{split}
-                        &g'(x)=\frac{d}{dx}(g(x))=-2x\sin(x^2)+3\cos(3x)\\
-                        &g''(x)=\frac{d}{dx}(g'(x))=-4x^2\cos(x^2)-2\sin(x^2)-9\sin(3x)
-                    \end{split}
-                \end{equation*}
-                \item \begin{equation*}
-                    R_1(x)=\frac{g''(x)}{2!}x^2
-                \end{equation*}
+                \item $g''(x)=\frac{d}{dx}(g'(x))=-4x^2\cos(x^2)-2\sin(x^2)-9\sin(3x)$
+                \item $R_1(x)=\frac{g''(x)}{2!}x^2$
                 \item \begin{equation*}
                     \begin{split}
                         &\left|g''(x)\right|\leq M\\
                         &\left|-4x^2\cos(x^2)-2\sin(x^2)-9\sin(3x)\right|\leq \left|4x^2\cos(x^2)\right|+\left|2\sin(x^2)\right|+\left|9\sin(3x)\right|\\
                     \end{split}
                 \end{equation*}
-                \customfbox{Abbiamo usato la \textbf{disuguaglianza triangolare}: $|x-y|\leq|x|+|y|$}
-                \item Troviamo gli equivalenti asintotici per i singoli elementi di "$M$" \begin{equation*}
+                \item Troviamo gli equivalenti asintotici per i singoli elementi di $M$ \begin{equation*}
                     \begin{split}
                         &\sin(x^2)\sim x^2\\
                         &\sin(3x) \sim 3x\\
                         &\cos(x^2) \sim 1 \rightarrow \text{Usiamo 1 perchè vogliamo fare una stima grossolana}
                     \end{split}
                 \end{equation*}
-                \item \begin{equation*}
+                \item Riscriviamo $M$: \begin{equation*}
                     \left|4x^2\cos(x^2)\right|+\left|2\sin(x^2)\right|+\left|9\sin(3x)\right|=4x^2+2x^2+27x=6x^2+27x
                 \end{equation*}
                 \item Sostituiamo $x=\frac{1}{4}$ perchè è la $x$ più grande che possiamo usare: \begin{equation*}
@@ -423,7 +283,16 @@
                 \end{equation*}
             \end{enumerate}
         \end{itemize}
-\newpage
+        \subsection{Esercizio da esame}
+        \textit{Calcolare lo sviluppo di Taylor di ordine 8 attorno ad $x_0=0$ della funzione $f(x)=\ln(\cos(x^2))$. Quanto vale $f^{(8)}(0)?$}
+        \begin{enumerate}
+            \item $\displaystyle \cos(x)=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\frac{x^8}{8!}+O(x^{10})$
+            \item $\displaystyle \cos(x^2) = 1-\frac{x^4}{2!}+\frac{x^8}{4!}+O(x^{12})$
+            \item $\displaystyle \ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\frac{x^5}{5}-\frac{x^6}{6}+\frac{x^7}{7}-\frac{x^8}{8}+O(x^9)$
+            \item $\displaystyle \ln(1+cos(x^2)-1)=-\frac{x^4}{2!}+\frac{x^8}{4!}-\frac{1}{2}\left(\frac{x^4}{2!}+\frac{x^8}{4!}\right)^2+\ldots=-\frac{x^4}{2}+\frac{x^8}{24}-\frac{x^8}{8}+O(x^12)\rightarrow P_8(x)$
+            \item $\displaystyle c_8=x^8\left(\frac{1}{24}-\frac{1}{8}\right)=-\frac{1}{12}x^8$
+            \item $\displaystyle f^{(8)}(0)=-\frac{1}{12}\cdot 8!=-3360$
+        \end{enumerate}
 \section{Formula di Taylor}
     \customfbox{$f^{(n)}$ indica l'ordine di derivazione $n$-esimo}
     Data una funzione $f:I\rightarrow\mathbb{R}$ definita su un intervallo $I$ e derivabile infinite volte ($C^{\infty}$)
@@ -498,17 +367,21 @@
         \end{equation*}
     \subsection{Criterio di Dirichelet}
         Permette di dire a cosa converge
-        \begin{itemize}
-            \item \textbf{Punti di continuità}: se $x_0$ è un punto in cui $f(x)$ è continua, la serie di Fourier converge al valore della funzione in quel punto: \begin{equation*}
-                S(x_0)=f(x_0)
-            \end{equation*}
-            \item \textbf{Punti di discontinuità}: se $x_0$ è un punto di discontinuità, la serie di Fourier $S(x_0)$ converge al valore medio tra il limite destro e il limite sinistro della funzione in quel punto: \begin{equation*}
-                S(x_0)=\frac{f(x_0^+)+f(x_0^-)}{2}
-            \end{equation*}
-            \item \textbf{Punti agli estremi dell'intervallo}: per i punti agli estremi dell'intervallo di integrazione, la serie di Fourier converge a: \begin{equation*}
-                S(\pm L)=\frac{f(L^-)+f(L^+)}{2}
-            \end{equation*}
-        \end{itemize}
+        $$
+        \tilde{f}(x)=\begin{cases}
+            f(x) & \text{se continua}\\
+            \frac{f(x^+)+f(x^-)}{2} & \text{se discontinua in } x
+        \end{cases}
+        $$
+        \subsubsection{Utilizzo}
+        \begin{enumerate}
+            \item Se la funzione è definita a tratti cerchiamo i punti di giunzione e controlliamo se sono continui o no (usando la tecnica del limite sinistro e destro), se la funzione è periodica anche gli estremi devono essere considerati come punti di giunzione            \item Riscrivi $\tilde{f}(x)$ impostando la condizione (se periodica di periodo $T$) come $x=x_0+Tk$ o $x\neq x_0+Tk$ dove $x_0$ è il punto di discontinuità
+        \end{enumerate}
+    \customfbox{Una serie di Fourier converge \textbf{uniformemente} se $f$ è continua su tutto $\mathbb{R}$ (o su $T$). Per vedere se una serie converge uninformemente basta usare una di queste strategie: \begin{itemize}
+        \item Funzione continua e derivabile a tratti $\Rightarrow$ converge
+        \item Usare il criterio di Weierstrass
+        \item E' funzione Lipschitziana ($|f(x)-f(y)|\leq k|x-y|$)
+    \end{itemize}}
     \subsection{Esercizio d'esame}
     \textit{Sia $f$ la funzione ottenuta estendendo per periodicità a tutto $\mathbb{R}$ la funzione} \begin{equation*}
         g(x)=\begin{cases}
@@ -547,7 +420,49 @@
             \end{equation*}
         \end{enumerate}
     \end{itemize}
+    \subsection{Esercizio d'esame}
+    \textit{Consideriamo la funzione di periodo 4 ottenuta prolungando per periodicità:} $\displaystyle f(x)=\begin{cases}
+        0 & x\in[-2,0)\\
+        2x & x\in[0,2)
+    \end{cases}$
+    \begin{itemize}
+        \item \textit{Disegnare il grafico di $f(x)$ nell'intervallo $[-10,10]$}
+        \item \textit{Calcolare i coefficienti $a_k$ e $b_k$ per ogni $k\geq 0$} \begin{enumerate}
+            \item $\displaystyle a_0=b_0=\frac{2}{T}\int_{-T/2}^{T/2}f(x)dx=\frac{1}{2}\int_{-2}^{2}f(x)dx=\frac{1}{2}\left(\int_{-2}^{0} 0\,dx+\int_{0}^{2}2x \,dx\right)=\frac{1}{2}(0+4)=2$
+            \item $\displaystyle a_k=\frac{2}{T}\int_{-T/2}^{T/2}f(x)\cos\left(\frac{2\pi}{T}kx\right)\,dx=\frac{1}{2}\left(\int_{-2}^{0} 0\,dx+\int_{0}^{2}2x\cos\left(\frac{\pi}{2}kx\right) \,dx\right)=\frac{4}{(\pi k)^2}((-1)^k-1)$
+            \item \begin{equation*}
+                \begin{split}
+                    \displaystyle \int 2x\cos\left(\frac{\pi}{2}kx\right) \,dx &\xrightarrow{t=\frac{\pi}{2}kx;dt=\frac{\pi}{2}k\,dx}\int \frac{2t}{\frac{\pi}{2}k}\cos\left(t\right) \left(\frac{2}{\pi k}\right)dt=\frac{2}{\pi k}\cdot\frac{4}{\pi k}\int t\cos\left(t\right) \,dt=\frac{8}{(\pi k)^2}\int t\cos\left(t\right) \,dt\\
+                    &\xrightarrow{f'=\cos(t); g=t} \frac{8}{(\pi k)^2}\left(t\sin(t)-\int \sin(t)\,dt\right) = \frac{8}{(\pi k)^2}\left(t\sin(t)+cos(t)\right)\\
+                    &\xrightarrow{t=\frac{\pi}{2}kx}\frac{8}{(\pi k)^2}\left(\frac{\pi}{2}kx \sin\left(\frac{\pi}{2}kx\right)+cos\left(\frac{\pi}{2}kx\right)\right) = \frac{4x}{\pi k}\sin\left(\frac{\pi}{2}kx\right)+\frac{8}{(\pi k)^2}\cos\left(\frac{\pi}{2}kx\right)
+                \end{split}
+            \end{equation*}
+            \item $\displaystyle b_k = \frac{2}{T}\int_{-T/2}^{T/2}f(x)\sin\left(\frac{2\pi}{T}kx\right)\,dx=(-1)^{k+1}\left(\frac{2}{\pi k}\right)$
+        \end{enumerate}
+        \item \textit{Calcolare la serie di Fourier di $f$ e discuterne la convergenza puntuale} \begin{enumerate}
+            \item $\displaystyle f(x)=1+\sum_{k=1}^{+\infty}\left[\left(\frac{4}{(\pi k)^2}((-1)^k-1)\right)\cos\left(\frac{\pi k}{2}x\right)+\left((-1)^{k+1}\left(\frac{2}{\pi k}\right)\sin\left(\frac{2}{\pi k}\right)\right)\right]$
+            \item Dirichlet: \begin{enumerate}
+                \item $\displaystyle x=0\rightarrow\begin{cases}
+                    \lim_{n\to 0^-} f(x) = 0\\
+                    \lim_{n\to 0^+} f(x) = 0
+                \end{cases}$ continua in $x=0$
+                \item $\displaystyle x=2\rightarrow\begin{cases}
+                    \lim_{n\to 2^-} f(x) = 4\\
+                    \lim_{n\to 2^+} f(x) = 0
+                \end{cases}$ discontinua in $x=2, \tilde{f}(2)=\frac{4+0}{2}=2\leftarrow$ converge a 2 per $x=2$
+                \item $\displaystyle \tilde{f}=\begin{cases}
+                    f(x) & \text{se } x\neq 2+4k\\
+                    2 & \text{se } x= 2+4k\\
+                \end{cases}$
+            \end{enumerate}
+        \end{enumerate}
+    \end{itemize}
 \section{Funzioni a due variabili}
+    \subsection{Proprietà degli insiemi}
+        \begin{itemize}
+            \item Un insieme è \textbf{chiuso} se c'è $\leq,\geq,=$
+            \item Un insieme è \textbf{limitato} se è limitato "orizzontalmente" ($i\leq x\leq j$) e "verticalmente" ($k\leq y\leq z$)
+        \end{itemize}
     \subsection{Derivata parziale}
         Deriviamo la funzione fissando una variabile e l'altra la trattiamo come costante:
         \begin{equation*}
@@ -608,7 +523,7 @@
                     \item $f_{yy}(x,y)$
                     \item $f_{xy}(x,y)$
                 \end{itemize}
-                \item Costruisco la matrice Hessiana (\textit{non necessario}): \begin{equation*}
+                \item Costruisco la matrice Hessiana: \begin{equation*}
                     H(x,y)=\begin{pmatrix}
                         f_{xx} & f_{xy} \\
                         f_{yx} & f_{yy}
@@ -626,27 +541,25 @@
                 \end{tabular}
             \end{enumerate}
     \subsection{Massimi e minimi vincolati (Metodo di Lagrange)}
-        Dato un vincolo $g(x, y) = 0 $, cerchiamo i massimi e minimi locali della funzione $f(x, y)$ vincolati a $C = \{(x, y) \in A \mid g(x, y) = 0\}$.
-        \textbf{Metodo:} si introducono i moltiplicatori di Lagrange e si risolve il sistema:
+        Dato un vincolo $g(x, y) = 0 $, cerchiamo i massimi e minimi assoluti della funzione $f(x, y)$ vincolati a $C = \{(x, y) \in A \mid g(x, y) = 0\}$.
         \begin{equation*}
             \begin{cases}
                 \nabla f(x, y) = \lambda \nabla g(x, y) \\
                 g(x, y) = 0
+            \end{cases} = \begin{cases}
+                f_x(x,y) = \lambda g_x(x,y)\\
+                f_y(x,y) = \lambda g_y(x,y)\\
+                g(x,y) = 0
             \end{cases}
         \end{equation*}
-        \textbf{Dove:}
-        \begin{itemize}
-            \item $\nabla f(x, y) = (f_x, f_y)$ è il gradiente della funzione obiettivo
-            \item $\nabla g(x, y) = (g_x, g_y)$ è il gradiente del vincolo
-            \item $\lambda$ è il moltiplicatore di Lagrange
-        \end{itemize}
         \textbf{Interpretazione geometrica:} in un punto vincolato di massimo o minimo, i gradienti di $f$ e $g$ sono paralleli $\Rightarrow \nabla f = \lambda \nabla g$
         \\\textbf{Procedura:}
         \begin{enumerate}
-            \item Calcola $\nabla f$ e $\nabla g$
-            \item Imposta il sistema: $\nabla f = \lambda \nabla g$, $g(x, y) = 0$
-            \item Risolvi il sistema per trovare i punti $(x, y)$ candidati
-            \item Verifica quali sono massimi, minimi (per ogni punto calcola $f(x_0,y_0)$ e guarda qual è il massimo e il minimo)
+            \item Una volta scritto il sistema risolvere usando questo meccanismo: \begin{itemize}
+                \item Trova quelle variabili per cui a destra dell'uguale viene 0 e fai un sistema per variabile che soddisfa questo requisito
+                \item Se per un caso viene impossibile il sistema sappiamo per certo che quella variabile deve essere $\neq 0$ altrimenti bisogna controllare anche il sistema $\neq 0$
+                \item Una volta trovati tutti i punti critici basta calcolare per la funzione di partenza e confrontare con i possibili punti critici calcolati con la matrice Hessiana
+            \end{itemize}
         \end{enumerate}
     \textbf{Con più vincoli: } $g_1(x, y) = 0$, $g_2(x, y) = 0$
     $\nabla f = \lambda_1 \nabla g_1 + \lambda_2 \nabla g_2$
@@ -696,51 +609,40 @@
             \end{itemize}
         \end{enumerate}
     \end{enumerate}
+    \subsection{Esercizio da esame}
+    \textit{Sia $f(x,y)=xe^{-y^2-x}$}
+    \begin{itemize}
+        \item \textit{Stabilire se $f$ è differenziabile sul suo dominio e calcolarne la derivata direzionale lungo $v=(1,2)$ nel punto $P_0=(3,-1)$} \begin{enumerate}
+            \item $f$ è differenziabile sul suo dominio perchè è una composizione di funzioni elementari
+            \item $\displaystyle f_x(x,y)=e^{-y^2-x}(1-x)$
+            \item $\displaystyle f_y(x,y)=-2yxe^{-y^2-x}$
+            \item $\bigtriangledown f(3,-1)=(-2e^{-4}, 6e^{-4})$
+            \item $\displaystyle ||v||=\sqrt{5}\neq 1\rightarrow u=\frac{1}{\sqrt{5}}(1,2)=\left(\frac{1}{\sqrt{5}},\frac{2}{\sqrt{5}}\right)$
+            \item $\displaystyle D_uF(3,-1)=\bigtriangledown f(3,-1)\cdot u=(-2e^{-4}, 6e^{-4})\left(\frac{1}{\sqrt{5}},\frac{2}{\sqrt{5}}\right)=-\frac{2e^{-4}}{\sqrt{5}}+\frac{12e^{-4}}{\sqrt{5}}=\frac{10e^{-4}}{\sqrt{5}}$
+        \end{enumerate}
+        \item \textit{Dopo aver disegnato l'insieme $\displaystyle \mathcal{C}=\{(x,y)\in\mathbb{R}^2:x^2+y^2\leq 4\}$ e stabilito se è chiuso e limitato, determinare, se esistono, i punti di massimo/minimo di $f$ su $\mathcal{C}$} \begin{enumerate}
+            \item Insieme chiuso e limitato
+            \item $x^2+y^2<4$ \begin{enumerate}
+                \item $\displaystyle \begin{cases}
+                    e^{-y^2-x}(1-x) = 0 \rightarrow 1-x = 0 \rightarrow x = 1\\
+                    -2yxe^{-y^2-x} = 0 \rightarrow -2xy = 0 \rightarrow -2y = 0 \rightarrow y=0
+                \end{cases}$
+                \\Punto critico $P_0(1,0)$ massimo locale per matrice Hessiana.
+                \item $x^2+y^2=4$ \begin{enumerate}
+                    \item $\displaystyle \bigtriangledown g(x,y)=(2x,2y)$ 
+                    \item $\begin{cases}
+                        e^{-y^2-x}(1-x) = \lambda 2x\\
+                        -2yxe^{-y^2-x} = \lambda 2y\\
+                        x^2+y^2=4
+                    \end{cases}$
+                    \item Facciamo le casistiche per $x=0,\lambda=0$ e $y=0$, risolvendo i sistemi abbiamo che solo per $y=0$ abbiamo due punti critici: $P_1(2,0)$ e $P_2(-2,0)$
+                    \item Calcolando questi punti nella funzione $f$ abbiamo che $P_2$ è minimo assoluto e $P_0$ è minimo locale e assoluto.
+                \end{enumerate}
+            \end{enumerate}
+        \end{enumerate}
+    \end{itemize}
+    \newpage
 \section{Extra}
-    \subsection{Metodo dell'angolo aggiunto}
-        Utile per riscrivere funzioni del tipo (a scelta)
-        \begin{equation*}
-            A\sin(x)+B\cos(x)=\begin{cases}
-                R\sin(x+\phi)\\
-                R\cos(x-\phi)
-            \end{cases}
-        \end{equation*}
-        \subsubsection{Caso $R\sin(x+\phi)$}
-            \begin{enumerate}
-                \item Sappiamo che $R\sin(x+\phi)=R\left(\sin(x)\cos(\phi)\right)+R\left(\cos(x)\sin(\phi)\right)$
-                \item $R=\sqrt{A^2+B^2}$
-                \item \begin{equation*}
-                    \phi=\arctan\left(\frac{B}{A}\right)=\begin{cases}
-                        \phi & A>0,B>0\\
-                        \phi+\pi & A<0, B>0\\
-                        \phi+\pi & A<0, B<0\\
-                        \phi & A>0,B<0
-                    \end{cases}
-                \end{equation*}
-            \end{enumerate}
-        \subsubsection{Caso $R\cos(x-\phi)$}
-            \begin{enumerate}
-                \item Sappiamo che $R\cos(x-\phi)=R\left(\cos(x)\cos(\phi)\right)+R\left(\sin(x)\sin(\phi)\right)$
-                \item $R=\sqrt{A^2+B^2}$
-                \item \begin{equation*}
-                    \phi=\arctan\left(\frac{A}{B}\right)=\begin{cases}
-                        \phi & A>0,B>0\\
-                        \phi+\pi & A<0, B>0\\
-                        \phi+\pi & A<0, B<0\\
-                        \phi & A>0,B<0
-                    \end{cases}
-                \end{equation*}
-            \end{enumerate}
-        \subsubsection{Esempio}
-        \begin{equation*}
-            \begin{split}
-                &-5\sin(3x)-12\cos(3x)\\
-                &A=-5,B=-12\\
-                &R=\sqrt{25+144}=13\\
-                &\phi=\arctan\left(\frac{-12}{-5}\right)\simeq 1.17+\pi\\
-                &-5\sin(3x)-12\cos(3x)\rightarrow 13\sin(3x+\phi)
-            \end{split}
-        \end{equation*}
     \subsection{Determinare crescenza/decrescenza velocemente}
         Se $h(n)=f(g(n))$
         \begin{center}
@@ -759,7 +661,19 @@
             \end{tabular}
         \end{center}
     \subsection{Formule utili}
-        \customfbox{Le forme indeterminate del tipo $f(n)^{g(n)}=\{0^0, \infty^0, 1^\infty\}$ si risolvono: $f(n)^{g(n)}=e^{g(n)\ln\left(f(n)\right)}$}
+        \begin{center}
+            \begin{tabular}{|c|}
+                \hline
+                $f(n)^{g(n)}=\{0^0, \infty^0, 1^\infty\}\to f(n)^{g(n)}=e^{g(n)\ln\left(f(n)\right)}$ \\
+                \hline
+                $\displaystyle n! \sim \sqrt{2\pi n}\left(\frac{n}{e}\right)^n$ per $n \to +\infty$ \\
+                \hline
+                $\displaystyle\binom{\alpha n}{\beta n}\sim \frac{1}{\sqrt{2\pi n}}\sqrt{\frac{\alpha}{\beta(\alpha-\beta)}}\left(\frac{\alpha^\alpha}{\beta^\beta(\alpha-\beta)^{\alpha-\beta}}\right)^n$\\
+                \hline
+                $\displaystyle\{(n!)^2\} \sim \frac{2\pi n}{e^{2n}}\left(\frac{n}{e}\right)^{2n} = \frac{2\pi n}{e^{2n}}(n!)^2$\\
+                \hline
+            \end{tabular}
+        \end{center}
     \subsection{Equivalenze Asintotiche Notevoli (per $x \to 0$ e $n \to +\infty$ rispettivamente):}
         \begin{center}
             \begin{tabular}{|lll|}
@@ -794,12 +708,6 @@
                 \hline
                 $\tanh x$ & $x$ & $x \to 0$ \\
                 \hline
-                &&\\
-                \hline
-                &&\\
-                \hline
-                &&\\
-                \hline
             \end{tabular}
             \begin{tabular}{|ll|}
                 \hline
@@ -817,23 +725,35 @@
                 \hline
                 $\displaystyle\ln(n+1) - \ln n$ & $\displaystyle\frac{1}{n}$ \\
                 \hline
-                &\\
-                \hline
-                &\\
-                \hline
-                &\\
-                \hline
-                &\\
-                \hline
-                &\\
-                \hline
             \end{tabular}
         \end{center}
-
-        \subsubsection*{Formule di Stirling:}
+    \subsection{Equivalenze trigonometriche}
         \begin{itemize}
-            \item $n! \sim \sqrt{2\pi n}\left(\frac{n}{e}\right)^n$ per $n \to +\infty$
-            \item $\binom{2n}{n} \sim \frac{4^n}{\sqrt{\pi n}}$ per $n \to +\infty$
-            \item $\{(n!)^2\} \sim \frac{2\pi n}{e^{2n}}\left(\frac{n}{e}\right)^{2n} = \frac{2\pi n}{e^{2n}}(n!)^2$
+            \item $\cos(k\pi) = (-1)^k \quad \forall k \in \mathbb{Z}$
+            \item $\sin(k\pi) = 0 \quad \forall k \in \mathbb{Z}$
+            \item $\cos((2k+1)\frac{\pi}{2}) = 0 \quad \forall k \in \mathbb{Z}$
+            \item $\sin((2k+1)\frac{\pi}{2}) = (-1)^k \quad \forall k \in \mathbb{Z}$
         \end{itemize}
+    \subsection{Insiemi vincolati noti}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Condizione} & \textbf{Grafico}\\
+        \hline
+        $x^2+y^2\leq k$ & Cerchio di raggio $\sqrt{k}$\\
+        \hline
+        $(x-x_0)^2+(y-y_0)^2\leq k$ & Cerchio di raggio $\sqrt{k}$ centrato in $(x_0,y_0)$\\
+        \hline
+        $-a\leq x \leq a \land -a\leq y\leq a$ & Quadrato\\
+        \hline
+        $x_0\pm a\leq x \leq x_0\pm a \land y_0\pm a\leq y\leq y_0\pm a$ & Quadrato centrato in $(x_0,y_0)$\\
+        \hline
+        $x_1\leq x \leq x_2\land y_1\leq y\leq y_2$ & Rettangolo\\
+        \hline
+        $\frac{x^2}{a^2}+\frac{y^2}{b^2}\leq k$ & Ellisse\\
+        \hline
+        $\displaystyle x\geq 0\land y\geq 0\land \frac{x}{L}+\frac{y}{H}\leq 1$ & Triangolo\\
+        \hline
+        $R_1^2\leq x^2+y^2\leq R_2^2$ & Anello\\
+        \hline
+    \end{tabular}
 \end{document}
