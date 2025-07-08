@@ -555,11 +555,10 @@
         \textbf{Interpretazione geometrica:} in un punto vincolato di massimo o minimo, i gradienti di $f$ e $g$ sono paralleli $\Rightarrow \nabla f = \lambda \nabla g$
         \\\textbf{Procedura:}
         \begin{enumerate}
-            \item Una volta scritto il sistema risolvere usando questo meccanismo: \begin{itemize}
-                \item Trova quelle variabili per cui a destra dell'uguale viene 0 e fai un sistema per variabile che soddisfa questo requisito
-                \item Se per un caso viene impossibile il sistema sappiamo per certo che quella variabile deve essere $\neq 0$ altrimenti bisogna controllare anche il sistema $\neq 0$
-                \item Una volta trovati tutti i punti critici basta calcolare per la funzione di partenza e confrontare con i possibili punti critici calcolati con la matrice Hessiana
-            \end{itemize}
+            \item Isola le $\lambda$
+            \item Mettile in uguaglianza
+            \item Risolvi il vincolo (isolando una delle due variabili)
+            \item Risolvi il sistema
         \end{enumerate}
     \textbf{Con più vincoli: } $g_1(x, y) = 0$, $g_2(x, y) = 0$
     $\nabla f = \lambda_1 \nabla g_1 + \lambda_2 \nabla g_2$
