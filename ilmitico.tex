@@ -564,6 +564,15 @@
     \textbf{Con più vincoli: } $g_1(x, y) = 0$, $g_2(x, y) = 0$
     $\nabla f = \lambda_1 \nabla g_1 + \lambda_2 \nabla g_2$
     $g_1(x, y) = 0, \quad g_2(x, y) = 0$
+    \subsubsection{Altro metodo (più veloce)}
+        Sfrutta l'interpretazione geometrica detta prima, quindi il determinante della matrice = 0:
+        $$
+        \begin{pmatrix}
+            f_x & g_x\\
+            f_y & g_y
+        \end{pmatrix}
+        $$
+        Quindi dobbiamo risolvere: $\displaystyle f_x\cdot g_y- g_x\cdot f_y=0$ e troviamo tutti i punti critici candidati
     \subsection{Esercizio da esame}
     \textit{Sia $f(x,y)=\frac{3}{2}x^2-8x-4xy+4y^2+12\ln x$}
     \begin{enumerate}
